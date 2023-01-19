@@ -1,6 +1,7 @@
 package frc.robot.subsystems;
 
 import com.revrobotics.CANSparkMax;
+import com.revrobotics.CANSparkMax.IdleMode;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 import frc.robot.Constants.CanIdConstants;
 
@@ -21,6 +22,11 @@ public class Drivetrain extends SubsystemBase{
         rightFollower.setSmartCurrentLimit(40);
         leftLeader.setSmartCurrentLimit(40);
         leftFollower.setSmartCurrentLimit(40);
+
+        rightLeader.setIdleMode(IdleMode.kBrake);
+        rightFollower.setIdleMode(IdleMode.kBrake);
+        leftLeader.setIdleMode(IdleMode.kBrake);
+        leftFollower.setIdleMode(IdleMode.kBrake);
 
         leftFollower.follow(leftLeader);
         rightFollower.follow(rightLeader);
