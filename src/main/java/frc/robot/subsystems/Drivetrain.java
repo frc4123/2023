@@ -17,8 +17,15 @@ public class Drivetrain {
     private final DifferentialDrive differentialDrive = new DifferentialDrive(leftLeader, rightLeader);
 
     public Drivetrain() {
+        rightLeader.setSmartCurrentLimit(40);
+        rightFollower.setSmartCurrentLimit(40);
+        leftLeader.setSmartCurrentLimit(40);
+        leftFollower.setSmartCurrentLimit(40);
+
         leftFollower.follow(leftLeader);
         rightFollower.follow(rightLeader);
+
+        differentialDrive.feed();
     }
         //left leader is speed, right leader is direction
     public void arcadeDrive(double speed, double direction){
