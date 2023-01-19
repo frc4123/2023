@@ -49,29 +49,6 @@ public final class Constants {
         public static int POV_LEFT = 270;
     }
 
-    /**
-     * PS4 buttons and their corresponding integer value. Note: you must use
-     * DS4Windows in order to use a PS4 controller on a computer
-     */
-    public static final class PS4Constants {
-
-        public static int X_BUTTON = 1;
-        public static int O_BUTTON = 2;
-        public static int SQUARE_BUTTON = 3;
-        public static int TRIANGLE_BUTTON = 4;
-    }
-
-    /** Logitech buttons and their corresponding integer value */
-    public static final class LogitechConstants {
-
-        public static final int ONE_BUTTON = 1;
-        public static final int TWO_BUTTON = 2;
-        public static final int THREE_BUTTON = 3;
-        public static final int FOUR_BUTTON = 4;
-        public static final int LB_BUTTON = 5;
-        public static final int RB_BUTTON = 6;
-    }
-
     /** Values relating to the robot's drive train */
     public static final class DriveConstants {
 
