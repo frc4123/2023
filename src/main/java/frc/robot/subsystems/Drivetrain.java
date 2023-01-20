@@ -6,6 +6,7 @@ import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 import frc.robot.Constants.CanIdConstants;
 
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import static frc.robot.Constants.*;
 
@@ -37,4 +38,8 @@ public class Drivetrain extends SubsystemBase{
     public void arcadeDrive(double speed, double direction){
         differentialDrive.arcadeDrive(speed, direction);
       }
+      protected void execute() {
+        SmartDashboard.putNumber("RPM", leftLeader.getBusVoltage());
+        SmartDashboard.putNumber("RPM", rightLeader.getBusVoltage()); 
+    }
 }
