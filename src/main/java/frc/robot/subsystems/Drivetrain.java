@@ -42,7 +42,7 @@ public class Drivetrain extends SubsystemBase{
     public void arcadeDrive(double speed, double direction){
         differentialDrive.arcadeDrive(speed, direction);
       }
-      protected void execute() {
+    public void execute() {
         SmartDashboard.putNumber("RPM", leftLeader.getBusVoltage());
         SmartDashboard.putNumber("RPM", rightLeader.getBusVoltage()); 
     }
