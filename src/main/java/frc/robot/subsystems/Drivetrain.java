@@ -3,11 +3,11 @@ package frc.robot.subsystems;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMax.IdleMode;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
-import frc.robot.Constants.CanIdConstants;
 
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import static frc.robot.Constants.*;
+import frc.robot.Constants.CanIdConstants;
 
 public class Drivetrain extends SubsystemBase{
     private CANSparkMax rightLeader = new CANSparkMax(CanIdConstants.RIGHT_LEADER_ID, MotorType.kBrushless);
@@ -18,6 +18,11 @@ public class Drivetrain extends SubsystemBase{
     private final DifferentialDrive differentialDrive = new DifferentialDrive(leftLeader, rightLeader);
 
     public Drivetrain() {
+        rightLeader.clearFaults();
+        rightFollower.clearFaults();
+        leftLeader.clearFaults();
+        leftFollower.clearFaults();
+
         rightLeader.setSmartCurrentLimit(40);
         rightFollower.setSmartCurrentLimit(40);
         leftLeader.setSmartCurrentLimit(40);
@@ -37,4 +42,11 @@ public class Drivetrain extends SubsystemBase{
     public void arcadeDrive(double speed, double direction){
         differentialDrive.arcadeDrive(speed, direction);
       }
+
+    public void execute() {
+        SmartDashboard.putNumber("LL Voltage", leftLeader.getBusVoltage());
+        SmartDashboard.putNumber("LF Voltage", leftFollower.getBusVoltage());
+        SmartDashboard.putNumber("RL Voltage", rightFollower.getBusVoltage());
+        SmartDashboard.putNumber("RF Voltage", rightFollower.getBusVoltage());
+    }
 }
