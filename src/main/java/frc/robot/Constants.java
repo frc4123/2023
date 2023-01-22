@@ -49,20 +49,6 @@ public final class Constants {
         public static int POV_LEFT = 270;
     }
 
-    /** Values relating to the robot's drive train */
-    public static final class DriveConstants {
-
-        // middle to middle of the wheel
-        public static final double TRACK_WIDTH_METERS = 0.638;
-        public static final int MAG_ENCODER_CPR = 4096;
-        // public static final int TALONFX_ENCODER_CPR = 2048;
-        // !remove from calculations if not using an integrated encoder
-        // public static final double GEAR_RATIO = 11.25; // 12:50 => 20:54 on a falconfx gives 14.8 fps. Driven/Driver
-        public static final double WHEEL_DIAMETER_METERS = 0.15875;
-        public static final double WHEEL_CIRCUMFERENCE_METERS = Math.PI * WHEEL_DIAMETER_METERS;
-        public static final int TIMEOUT = 50;
-    }
-
     /**
      * Mapping between physical CAN devices and their corresponding ID in the CAN
      * chain
