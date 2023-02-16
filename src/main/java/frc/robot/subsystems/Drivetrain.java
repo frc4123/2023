@@ -24,21 +24,9 @@ public class Drivetrain extends SubsystemBase{
         leftLeader.setSmartCurrentLimit(40);
         leftFollower.setSmartCurrentLimit(40);
 
-        rightLeader.setIdleMode(IdleMode.kBrake);
+    rightLeader.setIdleMode(IdleMode.kBrake);   
         rightFollower.setIdleMode(IdleMode.kBrake);
         leftLeader.setIdleMode(IdleMode.kBrake);
-        leftFollower.setIdleMode(IdleMode.kBrake);
-
-        leftFollower.follow(leftLeader);
-        rightFollower.follow(rightLeader);
-
-        differentialDrive.feed();
-    }
-        //left leader is speed, right leader is direction
-    public void arcadeDrive(double speed, double direction){
-        differentialDrive.arcadeDrive(speed, direction);
-      }
-      protected void execute() {
         SmartDashboard.putNumber("RPM", leftLeader.getBusVoltage());
         SmartDashboard.putNumber("RPM", rightLeader.getBusVoltage()); 
     }
