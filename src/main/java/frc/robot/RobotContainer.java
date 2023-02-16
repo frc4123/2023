@@ -23,7 +23,8 @@ public class RobotContainer {
     public RobotContainer() {
         // add negative (-) to getLeftY to invert drive (shooter will be the back, intake will be the front)
         configureButtonBindings();
-    
+        
+    //arcadedrive gives error
         drivetrain.arcadeDrive(driverController.getRightX(), driverController.getLeftY());
       }
 
