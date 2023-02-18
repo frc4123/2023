@@ -21,6 +21,6 @@ public class Intake extends SubsystemBase{
 
     public void setIntakeVelo(double velo){
         //command below needs fixing
-        intakeLeader.set(ControlType.PercentOutput, velo);
+        //intakeLeader.set(ControlType.PercentOutput, velo);
     }
 }
