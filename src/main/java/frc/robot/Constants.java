@@ -62,7 +62,8 @@ public final class Constants {
         public static final int LEFT_LEADER_ID = 5;
         public static final int LEFT_FOLLOWER_ID = 6;
         public static final int VERT_ELEV_ID = 7;
-        public static final int INTAKE_LEADER_ID = 8;
-        public static final int HORIZ_ELEV_ID = 9;
+        public static final int HORIZ_ELEV_ID = 8;
+        public static final int INTAKE_LEADER_ID = 9;
+        public static final int WRIST_ID = 10;
     }
 }
