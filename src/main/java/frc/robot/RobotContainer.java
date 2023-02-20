@@ -1,11 +1,8 @@
 package frc.robot;
 
-import static frc.robot.Constants.*;
-
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.RunCommand;
 import edu.wpi.first.wpilibj2.command.WaitCommand;
@@ -17,14 +14,27 @@ import frc.robot.Constants.UsbConstants;
 import frc.robot.Constants.XboxConstants;
 
 import frc.robot.commands.AutoDriveBackCommand;
+import frc.robot.commands.VertUp;
+import frc.robot.commands.VertDown;
+import frc.robot.commands.IntakeIn;
+import frc.robot.commands.IntakeOut;
 
 import frc.robot.subsystems.Drivetrain;
+import frc.robot.subsystems.VertElev;
+import frc.robot.subsystems.Intake;
 
 public class RobotContainer {
     private final Drivetrain drivetrain = new Drivetrain();
+    private final VertElev vertElev = new VertElev();
+    private final Intake intake = new Intake();
 
     private final XboxController driverController = new XboxController(UsbConstants.DRIVER_CONTROLLER_PORT);
     private final XboxController driverController2 = new XboxController(UsbConstants.AUXDRIVER_CONTROLLER_PORT);
+
+    private final VertUp vertUp = new VertUp(vertElev);
+    private final VertDown vertDown = new VertDown(vertElev);
+    private final IntakeIn intakeIn = new IntakeIn(intake);
+    private final IntakeOut intakeOut = new IntakeOut(intake);
 
     private final SendableChooser<Command> m_autoChooser = new SendableChooser<Command>();
 
@@ -58,6 +68,21 @@ public class RobotContainer {
         POVButton povDownLeft = new POVButton(driverController2, 225);
         POVButton povLeft = new POVButton(driverController2, 270);
         POVButton povUpLeft = new POVButton(driverController2, 315);
+
+      //   lb.whenHeld();
+      //   rb.whenHeld();
+        a.whileTrue(intakeIn);
+      //   b.whenHeld();
+      //   x.whileHeld();
+        y.whileTrue(intakeOut);
+        povUp.whileTrue(vertUp);
+      //   povUpRight.whileHeld();
+      //   povUpLeft.whileHeld();
+        povDown.whileTrue(vertDown);
+      //   povDownRight.whileHeld();
+      //   povDownLeft.whileHeld();
+      //   povRight.whileHeld();
+      //   povLeft.whileHeld();
       }
 
       public void initializeAutoChooser(){
