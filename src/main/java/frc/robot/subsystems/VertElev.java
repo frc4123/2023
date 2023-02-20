@@ -11,7 +11,7 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import static frc.robot.Constants.*;
 
 public class VertElev extends SubsystemBase{
-    private CANSparkMax vert = new CANSparkMax(CanIdConstants.INTAKE_LEADER_ID, MotorType.kBrushless);
+    private CANSparkMax vert = new CANSparkMax(CanIdConstants.VERT_ELEV_ID, MotorType.kBrushless);
 
     /** Creates a new IntakeSubsystem*/
     public VertElev(){
