@@ -16,6 +16,7 @@ public class Wrist extends SubsystemBase{
     public Wrist(){
         wrist.setOpenLoopRampRate(0.7);
         wrist.setIdleMode(IdleMode.kBrake);
+        wrist.clearFaults();
     }
 
     public void setWristVelo(double velo){

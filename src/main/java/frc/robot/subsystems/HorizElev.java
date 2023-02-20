@@ -16,6 +16,7 @@ public class HorizElev extends SubsystemBase{
     public HorizElev(){
         vert.setOpenLoopRampRate(0.7);
         vert.setIdleMode(IdleMode.kBrake);
+        vert.clearFaults();
     }
 
     public void setHorizVelo(double velo){

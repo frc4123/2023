@@ -16,6 +16,7 @@ public class Intake extends SubsystemBase{
     public Intake(){
         intakeLeader.setOpenLoopRampRate(0.7);
         intakeLeader.setIdleMode(IdleMode.kBrake);
+        intakeLeader.clearFaults();
     }
 
     public void setIntakeVelo(double velo){

@@ -16,6 +16,7 @@ public class VertElev extends SubsystemBase{
     public VertElev(){
         vert.setOpenLoopRampRate(0.7);
         vert.setIdleMode(IdleMode.kBrake);
+        vert.clearFaults();
     }
 
     public void setVertVelo(double velo){
