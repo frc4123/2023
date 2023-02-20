@@ -6,15 +6,16 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.RunCommand;
 import edu.wpi.first.wpilibj2.command.WaitCommand;
-import edu.wpi.first.wpilibj2.command.button.JoystickButton;
-import edu.wpi.first.wpilibj2.command.button.POVButton;
-import edu.wpi.first.wpilibj2.command.button.Trigger;
+// import edu.wpi.first.wpilibj2.command.button.JoystickButton;
+// import edu.wpi.first.wpilibj2.command.button.POVButton;
+// import edu.wpi.first.wpilibj2.command.button.Trigger;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 
 import frc.robot.Constants.UsbConstants;
-import frc.robot.Constants.XboxConstants;
+// import frc.robot.Constants.XboxConstants;
 
 import frc.robot.commands.AutoDriveBackCommand;
+// import frc.robot.commands.DockDrive;
 import frc.robot.commands.VertUp;
 import frc.robot.commands.VertDown;
 import frc.robot.commands.IntakeIn;
@@ -85,8 +86,10 @@ public class RobotContainer {
 
       public void initializeAutoChooser(){
         m_autoChooser.setDefaultOption("Do Nothing", new WaitCommand(0));
-        m_autoChooser.addOption("Drive Back", new WaitCommand(0.1)
+        m_autoChooser.addOption("Leave Community Zone", new WaitCommand(0.1)
           .andThen(new AutoDriveBackCommand(drivetrain).withTimeout(3.8)));
+        // m_autoChooser.addOption("Charge Station Dock", new WaitCommand(0.1)
+          // .andThen(new DockDrive(drivetrain).withTimeout(5)));
       
        SmartDashboard.putData("Auto Selector", m_autoChooser);
       }
