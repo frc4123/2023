@@ -14,7 +14,7 @@ public class VertUp extends CommandBase{
 
     @Override
     public void execute() {
-        vertElev.setVertVelo(0.4);
+        vertElev.setVertVelo(-0.5);
     }
 
     @Override

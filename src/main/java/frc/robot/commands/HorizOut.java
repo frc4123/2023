@@ -14,7 +14,7 @@ public class HorizOut extends CommandBase{
 
     @Override
     public void execute() {
-        horizElev.setHorizVelo(-0.4);
+        horizElev.setHorizVelo(0.237);
     }
 
     @Override
