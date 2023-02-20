@@ -9,6 +9,7 @@ import edu.wpi.first.wpilibj2.command.WaitCommand;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj2.command.button.POVButton;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
+import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 
 import frc.robot.Constants.UsbConstants;
 import frc.robot.Constants.XboxConstants;
@@ -20,20 +21,24 @@ import frc.robot.commands.IntakeIn;
 import frc.robot.commands.IntakeOut;
 import frc.robot.commands.HorizIn;
 import frc.robot.commands.HorizOut;
+import frc.robot.commands.WristIn;
+import frc.robot.commands.WristOut;
 
 import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.VertElev;
 import frc.robot.subsystems.Intake;
 import frc.robot.subsystems.HorizElev;
+import frc.robot.subsystems.Wrist;
 
 public class RobotContainer {
     private final Drivetrain drivetrain = new Drivetrain();
     private final VertElev vertElev = new VertElev();
     private final Intake intake = new Intake();
     private final HorizElev horizElev = new HorizElev();
+    private final Wrist wrist = new Wrist();
 
     private final XboxController driverController = new XboxController(UsbConstants.DRIVER_CONTROLLER_PORT);
-    private final XboxController driverController2 = new XboxController(UsbConstants.AUXDRIVER_CONTROLLER_PORT);
+    private final CommandXboxController driverController2 = new CommandXboxController(UsbConstants.AUXDRIVER_CONTROLLER_PORT);
 
     private final VertUp vertUp = new VertUp(vertElev);
     private final VertDown vertDown = new VertDown(vertElev);
@@ -41,6 +46,8 @@ public class RobotContainer {
     private final IntakeOut intakeOut = new IntakeOut(intake);
     private final HorizIn horizIn = new HorizIn(horizElev);
     private final HorizOut horizOut = new HorizOut(horizElev);
+    private final WristIn wristIn = new WristIn(wrist);
+    private final WristOut wristOut = new WristOut(wrist);
 
     private final SendableChooser<Command> m_autoChooser = new SendableChooser<Command>();
 
@@ -60,35 +67,20 @@ public class RobotContainer {
       }
 
       private void configureButtonBindings() {
-        Trigger lb = new JoystickButton(driverController, XboxConstants.LB_BUTTON);
-        Trigger rb = new JoystickButton(driverController, XboxConstants.RB_BUTTON);
-        Trigger a = new JoystickButton(driverController2, XboxConstants.A_BUTTON);
-        Trigger b = new JoystickButton(driverController2, XboxConstants.B_BUTTON);
-        Trigger x = new JoystickButton(driverController2, XboxConstants.X_BUTTON);
-        Trigger y = new JoystickButton(driverController2, XboxConstants.Y_BUTTON);
-        POVButton povUp = new POVButton(driverController2, 0);
-        POVButton povUpRight = new POVButton(driverController2, 45);
-        POVButton povRight = new POVButton(driverController2, 90);
-        POVButton povDownRight = new POVButton(driverController2, 135);
-        POVButton povDown = new POVButton(driverController2, 180);
-        POVButton povDownLeft = new POVButton(driverController2, 225);
-        POVButton povLeft = new POVButton(driverController2, 270);
-        POVButton povUpLeft = new POVButton(driverController2, 315);
-
-      //   lb.whileTrue();
-      //   rb.whileTrue();
-        a.whileTrue(intakeIn);
-      //   b.whileTrue();
-      //   x.whileTrue();
-        y.whileTrue(intakeOut);
-        povUp.whileTrue(vertUp);
-        povUpRight.whileTrue(horizIn);
-        povUpLeft.whileTrue(horizOut);
-        povDown.whileTrue(vertDown);
-      //   povDownRight.whileTrue();
-      //   povDownLeft.whileTrue();
-      //   povRight.whileTrue();
-      //   povLeft.whileTrue();
+      //   driverController2.lb().whileTrue();
+      //   driverCOntroller2.rb().whileTrue();
+        driverController2.a().whileTrue(intakeIn);
+        driverController2.b().whileTrue(wristIn);
+        driverController2.x().whileTrue(wristOut);
+        driverController2.y().whileTrue(intakeOut);
+        driverController2.povUp().whileTrue(vertUp);
+        driverController2.povRight().whileTrue(horizIn);
+        driverController2.povLeft().whileTrue(horizOut);
+        driverController2.povDown().whileTrue(vertDown);
+      //   driverController2.povDownRight().whileTrue();
+      //   driverController2.povDownLeft().whileTrue();
+      //   driverController2.povRight().whileTrue();
+      //   driverController2.povLeft().whileTrue();
       }
 
       public void initializeAutoChooser(){
