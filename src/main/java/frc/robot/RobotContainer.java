@@ -18,15 +18,19 @@ import frc.robot.commands.VertUp;
 import frc.robot.commands.VertDown;
 import frc.robot.commands.IntakeIn;
 import frc.robot.commands.IntakeOut;
+import frc.robot.commands.HorizIn;
+import frc.robot.commands.HorizOut;
 
 import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.VertElev;
 import frc.robot.subsystems.Intake;
+import frc.robot.subsystems.HorizElev;
 
 public class RobotContainer {
     private final Drivetrain drivetrain = new Drivetrain();
     private final VertElev vertElev = new VertElev();
     private final Intake intake = new Intake();
+    private final HorizElev horizElev = new HorizElev();
 
     private final XboxController driverController = new XboxController(UsbConstants.DRIVER_CONTROLLER_PORT);
     private final XboxController driverController2 = new XboxController(UsbConstants.AUXDRIVER_CONTROLLER_PORT);
@@ -35,6 +39,8 @@ public class RobotContainer {
     private final VertDown vertDown = new VertDown(vertElev);
     private final IntakeIn intakeIn = new IntakeIn(intake);
     private final IntakeOut intakeOut = new IntakeOut(intake);
+    private final HorizIn horizIn = new HorizIn(horizElev);
+    private final HorizOut horizOut = new HorizOut(horizElev);
 
     private final SendableChooser<Command> m_autoChooser = new SendableChooser<Command>();
 
@@ -69,20 +75,20 @@ public class RobotContainer {
         POVButton povLeft = new POVButton(driverController2, 270);
         POVButton povUpLeft = new POVButton(driverController2, 315);
 
-      //   lb.whenHeld();
-      //   rb.whenHeld();
+      //   lb.whileTrue();
+      //   rb.whileTrue();
         a.whileTrue(intakeIn);
-      //   b.whenHeld();
-      //   x.whileHeld();
+      //   b.whileTrue();
+      //   x.whileTrue();
         y.whileTrue(intakeOut);
         povUp.whileTrue(vertUp);
-      //   povUpRight.whileHeld();
-      //   povUpLeft.whileHeld();
+        povUpRight.whileTrue(horizIn);
+        povUpLeft.whileTrue(horizOut);
         povDown.whileTrue(vertDown);
-      //   povDownRight.whileHeld();
-      //   povDownLeft.whileHeld();
-      //   povRight.whileHeld();
-      //   povLeft.whileHeld();
+      //   povDownRight.whileTrue();
+      //   povDownLeft.whileTrue();
+      //   povRight.whileTrue();
+      //   povLeft.whileTrue();
       }
 
       public void initializeAutoChooser(){
