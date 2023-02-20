@@ -48,7 +48,7 @@ public class Drivetrain extends SubsystemBase{
         differentialDrive.arcadeDrive(speed, direction);
       }
     public void execute() {
-        SmartDashboard.putNumber("Left Volt", leftLeader.getBusVoltage());
-        SmartDashboard.putNumber("Right Volt", rightLeader.getBusVoltage());
+        SmartDashboard.putNumber("Left Output", leftLeader.getAppliedOutput());
+        SmartDashboard.putNumber("Right Output", rightLeader.getAppliedOutput());
     }
 }
