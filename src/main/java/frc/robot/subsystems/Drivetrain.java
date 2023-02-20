@@ -23,6 +23,11 @@ public class Drivetrain extends SubsystemBase{
         leftLeader.clearFaults();
         leftFollower.clearFaults();
 
+        rightLeader.setOpenLoopRampRate(0.5);
+        rightFollower.setOpenLoopRampRate(0.5);
+        leftLeader.setOpenLoopRampRate(0.5);
+        leftFollower.setOpenLoopRampRate(0.5);
+
         rightLeader.setSmartCurrentLimit(40);
         rightFollower.setSmartCurrentLimit(40);
         leftLeader.setSmartCurrentLimit(40);
