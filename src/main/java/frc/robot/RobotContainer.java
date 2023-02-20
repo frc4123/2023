@@ -55,16 +55,9 @@ public class RobotContainer {
     public RobotContainer() {
         // add negative (-) to getLeftY to invert drive (shooter will be the back, intake will be the front)
         configureButtonBindings();
-
-        initializeAutoChooser();
-
-        drivetrain.execute();
-    
-        drivetrain.setDefaultCommand(new RunCommand(() -> drivetrain.arcadeDrive(
-          driverController.getRightX(),
-          driverController.getLeftY()),
-          drivetrain));
-
+        
+    //arcadedrive gives error
+        // drivetrain.arcadeDrive(driverController.getRightX(), driverController.getLeftY());
       }
 
       private void configureButtonBindings() {
@@ -96,7 +89,7 @@ public class RobotContainer {
       
       //before coding, discuss strategy with team
       public Command getAutonomousCommand() {
-        return m_autoChooser.getSelected();
+        return null;
       }
     
 }
