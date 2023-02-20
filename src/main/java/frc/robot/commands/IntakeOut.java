@@ -14,7 +14,7 @@ public class IntakeOut extends CommandBase{
 
     @Override
     public void execute() {
-        intake.setIntakeVelo(0.4);
+        intake.setIntakeVelo(-0.4);
     }
 
     @Override
