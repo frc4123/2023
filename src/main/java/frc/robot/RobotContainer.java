@@ -4,24 +4,23 @@ import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
-import edu.wpi.first.wpilibj2.command.RunCommand;
 import edu.wpi.first.wpilibj2.command.WaitCommand;
-// import edu.wpi.first.wpilibj2.command.button.JoystickButton;
-// import edu.wpi.first.wpilibj2.command.button.POVButton;
-// import edu.wpi.first.wpilibj2.command.button.Trigger;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
+
 import frc.robot.Constants.UsbConstants;
-// import frc.robot.Constants.XboxConstants;
-import frc.robot.commands.AutoDriveBackCommand;
+
 import frc.robot.commands.HorizIn;
 import frc.robot.commands.HorizOut;
 import frc.robot.commands.IntakeIn;
 import frc.robot.commands.IntakeOut;
 import frc.robot.commands.VertDown;
-// import frc.robot.commands.DockDrive;
 import frc.robot.commands.VertUp;
 import frc.robot.commands.WristIn;
 import frc.robot.commands.WristOut;
+import frc.robot.commands.auto.AutoDriveBackCommand;
+// import frc.robot.commands.auto.DockDrive;
+import frc.robot.commands.drivetrain.SetDrivetrain;
+
 import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.HorizElev;
 import frc.robot.subsystems.Intake;
@@ -49,23 +48,26 @@ public class RobotContainer {
 
     private final SendableChooser<Command> m_autoChooser = new SendableChooser<Command>();
 
+    public void initializeSubsystems() {
+      drivetrain.execute();
+
+      // add negative (-) to getLeftY to invert drive
+      drivetrain.setDefaultCommand(
+          new SetDrivetrain(
+            drivetrain, 
+            () -> driverController.getRightX(), 
+            () -> driverController.getLeftY()));
+    }
+
     public RobotContainer() {
-      // add negative (-) to getLeftY to invert drive (shooter will be the back, intake will be the front)
         configureButtonBindings();
-
+        initializeSubsystems();
         initializeAutoChooser();
-
-        drivetrain.execute();
-
-        drivetrain.setDefaultCommand(new RunCommand(() -> drivetrain.arcadeDrive(
-          driverController.getRightX(),
-          driverController.getLeftY()),
-          drivetrain));
       }
 
       private void configureButtonBindings() {
       //   driverController2.lb().whileTrue();
-      //   driverCOntroller2.rb().whileTrue();
+      //   driverController2.rb().whileTrue();
         driverController2.a().whileTrue(intakeIn);
         driverController2.b().whileTrue(wristIn);
         driverController2.x().whileTrue(wristOut);
@@ -86,6 +88,8 @@ public class RobotContainer {
           .andThen(new AutoDriveBackCommand(drivetrain).withTimeout(3.8)));
         // m_autoChooser.addOption("Charge Station Dock", new WaitCommand(0.1)
           // .andThen(new DockDrive(drivetrain).withTimeout(5)));
+        m_autoChooser.addOption("Drivetrain Test", new WaitCommand(0.1)
+          .andThen(new AutoDriveBackCommand(drivetrain).withTimeout(5)));
       
        SmartDashboard.putData("Auto Selector", m_autoChooser);
       }
