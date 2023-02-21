@@ -10,25 +10,22 @@ import edu.wpi.first.wpilibj2.command.WaitCommand;
 // import edu.wpi.first.wpilibj2.command.button.POVButton;
 // import edu.wpi.first.wpilibj2.command.button.Trigger;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
-
 import frc.robot.Constants.UsbConstants;
 // import frc.robot.Constants.XboxConstants;
-
 import frc.robot.commands.AutoDriveBackCommand;
-// import frc.robot.commands.DockDrive;
-import frc.robot.commands.VertUp;
-import frc.robot.commands.VertDown;
-import frc.robot.commands.IntakeIn;
-import frc.robot.commands.IntakeOut;
 import frc.robot.commands.HorizIn;
 import frc.robot.commands.HorizOut;
+import frc.robot.commands.IntakeIn;
+import frc.robot.commands.IntakeOut;
+import frc.robot.commands.VertDown;
+// import frc.robot.commands.DockDrive;
+import frc.robot.commands.VertUp;
 import frc.robot.commands.WristIn;
 import frc.robot.commands.WristOut;
-
 import frc.robot.subsystems.Drivetrain;
-import frc.robot.subsystems.VertElev;
-import frc.robot.subsystems.Intake;
 import frc.robot.subsystems.HorizElev;
+import frc.robot.subsystems.Intake;
+import frc.robot.subsystems.VertElev;
 import frc.robot.subsystems.Wrist;
 
 public class RobotContainer {
@@ -53,11 +50,17 @@ public class RobotContainer {
     private final SendableChooser<Command> m_autoChooser = new SendableChooser<Command>();
 
     public RobotContainer() {
-        // add negative (-) to getLeftY to invert drive (shooter will be the back, intake will be the front)
+      // add negative (-) to getLeftY to invert drive (shooter will be the back, intake will be the front)
         configureButtonBindings();
-        
-    //arcadedrive gives error
-        // drivetrain.arcadeDrive(driverController.getRightX(), driverController.getLeftY());
+
+        initializeAutoChooser();
+
+        drivetrain.execute();
+
+        drivetrain.setDefaultCommand(new RunCommand(() -> drivetrain.arcadeDrive(
+          driverController.getRightX(),
+          driverController.getLeftY()),
+          drivetrain));
       }
 
       private void configureButtonBindings() {
@@ -89,7 +92,7 @@ public class RobotContainer {
       
       //before coding, discuss strategy with team
       public Command getAutonomousCommand() {
-        return null;
+        return m_autoChooser.getSelected();
       }
     
 }
