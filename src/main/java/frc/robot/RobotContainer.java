@@ -28,33 +28,33 @@ import frc.robot.subsystems.VertElev;
 import frc.robot.subsystems.Wrist;
 
 public class RobotContainer {
-    private final Drivetrain drivetrain = new Drivetrain();
-    private final VertElev vertElev = new VertElev();
-    private final Intake intake = new Intake();
-    private final HorizElev horizElev = new HorizElev();
-    private final Wrist wrist = new Wrist();
+    private final Drivetrain m_drivetrain = new Drivetrain();
+    private final VertElev m_vertElev = new VertElev();
+    private final Intake m_intake = new Intake();
+    private final HorizElev m_horizElev = new HorizElev();
+    private final Wrist m_wrist = new Wrist();
 
     private final XboxController driverController = new XboxController(UsbConstants.DRIVER_CONTROLLER_PORT);
     private final CommandXboxController driverController2 = new CommandXboxController(UsbConstants.AUXDRIVER_CONTROLLER_PORT);
 
-    private final VertUp vertUp = new VertUp(vertElev);
-    private final VertDown vertDown = new VertDown(vertElev);
-    private final IntakeIn intakeIn = new IntakeIn(intake);
-    private final IntakeOut intakeOut = new IntakeOut(intake);
-    private final HorizIn horizIn = new HorizIn(horizElev);
-    private final HorizOut horizOut = new HorizOut(horizElev);
-    private final WristIn wristIn = new WristIn(wrist);
-    private final WristOut wristOut = new WristOut(wrist);
+    private final VertUp m_vertUp = new VertUp(m_vertElev);
+    private final VertDown m_vertDown = new VertDown(m_vertElev);
+    private final IntakeIn m_intakeIn = new IntakeIn(m_intake);
+    private final IntakeOut m_intakeOut = new IntakeOut(m_intake);
+    private final HorizIn m_horizIn = new HorizIn(m_horizElev);
+    private final HorizOut m_horizOut = new HorizOut(m_horizElev);
+    private final WristIn m_wristIn = new WristIn(m_wrist);
+    private final WristOut m_wristOut = new WristOut(m_wrist);
 
     private final SendableChooser<Command> m_autoChooser = new SendableChooser<Command>();
 
     public void initializeSubsystems() {
-      drivetrain.execute();
+      m_drivetrain.execute();
 
       // add negative (-) to getLeftY to invert drive
-      drivetrain.setDefaultCommand(
+      m_drivetrain.setDefaultCommand(
           new SetDrivetrain(
-            drivetrain, 
+            m_drivetrain, 
             () -> driverController.getRightX(), 
             () -> driverController.getLeftY()));
     }
@@ -68,14 +68,14 @@ public class RobotContainer {
       private void configureButtonBindings() {
       //   driverController2.lb().whileTrue();
       //   driverController2.rb().whileTrue();
-        driverController2.a().whileTrue(intakeIn);
-        driverController2.b().whileTrue(wristIn);
-        driverController2.x().whileTrue(wristOut);
-        driverController2.y().whileTrue(intakeOut);
-        driverController2.povUp().whileTrue(vertUp);
-        driverController2.povRight().whileTrue(horizIn);
-        driverController2.povLeft().whileTrue(horizOut);
-        driverController2.povDown().whileTrue(vertDown);
+        driverController2.a().whileTrue(m_intakeIn);
+        driverController2.b().whileTrue(m_wristIn);
+        driverController2.x().whileTrue(m_wristOut);
+        driverController2.y().whileTrue(m_intakeOut);
+        driverController2.povUp().whileTrue(m_vertUp);
+        driverController2.povRight().whileTrue(m_horizIn);
+        driverController2.povLeft().whileTrue(m_horizOut);
+        driverController2.povDown().whileTrue(m_vertDown);
       //   driverController2.povDownRight().whileTrue();
       //   driverController2.povDownLeft().whileTrue();
       //   driverController2.povRight().whileTrue();
@@ -85,11 +85,11 @@ public class RobotContainer {
       public void initializeAutoChooser(){
         m_autoChooser.setDefaultOption("Do Nothing", new WaitCommand(0));
         m_autoChooser.addOption("Leave Community Zone", new WaitCommand(0.1)
-          .andThen(new AutoDriveBackCommand(drivetrain).withTimeout(3.8)));
+          .andThen(new AutoDriveBackCommand(m_drivetrain).withTimeout(3.8)));
         // m_autoChooser.addOption("Charge Station Dock", new WaitCommand(0.1)
           // .andThen(new DockDrive(drivetrain).withTimeout(5)));
         m_autoChooser.addOption("Drivetrain Test", new WaitCommand(0.1)
-          .andThen(new AutoDriveBackCommand(drivetrain).withTimeout(5)));
+          .andThen(new AutoDriveBackCommand(m_drivetrain).withTimeout(5)));
       
        SmartDashboard.putData("Auto Selector", m_autoChooser);
       }
