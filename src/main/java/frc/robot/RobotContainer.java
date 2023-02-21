@@ -66,8 +66,8 @@ public class RobotContainer {
       }
 
       private void configureButtonBindings() {
-      //   driverController2.lb().whileTrue();
-      //   driverController2.rb().whileTrue();
+      //   driverController2.lb().whileTrue();    can we make turn the drivetrain half speed with this?
+      //   driverController2.rb().whileTrue();    maybe flip drive direction with this? ill talk with marco and toshi
         driverController2.a().whileTrue(m_intakeIn);
         driverController2.b().whileTrue(m_wristIn);
         driverController2.x().whileTrue(m_wristOut);
@@ -78,8 +78,8 @@ public class RobotContainer {
         driverController2.povDown().whileTrue(m_vertDown);
       //   driverController2.povDownRight().whileTrue();
       //   driverController2.povDownLeft().whileTrue();
-      //   driverController2.povRight().whileTrue();
-      //   driverController2.povLeft().whileTrue();
+      //   driverController2.povUpRight().whileTrue();
+      //   driverController2.povUpLeft().whileTrue();
       }
 
       public void initializeAutoChooser(){
