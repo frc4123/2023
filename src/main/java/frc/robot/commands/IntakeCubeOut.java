@@ -4,17 +4,17 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 
 import frc.robot.subsystems.Intake;
 
-public class IntakeOut extends CommandBase{
+public class IntakeCubeOut extends CommandBase{
     Intake intake;
 
-    public IntakeOut(Intake intake) {
+    public IntakeCubeOut(Intake intake) {
         this.intake = intake;
         addRequirements(intake);
     }
 
     @Override
     public void execute() {
-        intake.setIntakeVelo(-0.4);
+        intake.setIntakeVelo(0.4);
     }
 
     @Override

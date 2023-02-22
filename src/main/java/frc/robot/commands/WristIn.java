@@ -14,7 +14,7 @@ public class WristIn extends CommandBase{
 
     @Override
     public void execute() {
-        wrist.setWristVelo(0.4);
+        wrist.setWristVelo(-0.4);
     }
 
     @Override
