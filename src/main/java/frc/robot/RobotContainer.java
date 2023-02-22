@@ -11,8 +11,8 @@ import frc.robot.Constants.UsbConstants;
 
 import frc.robot.commands.HorizIn;
 import frc.robot.commands.HorizOut;
-import frc.robot.commands.IntakeIn;
-import frc.robot.commands.IntakeOut;
+import frc.robot.commands.IntakeCubeIn;
+import frc.robot.commands.IntakeCubeOut;
 import frc.robot.commands.VertDown;
 import frc.robot.commands.VertUp;
 import frc.robot.commands.WristIn;
@@ -39,8 +39,8 @@ public class RobotContainer {
 
     private final VertUp m_vertUp = new VertUp(m_vertElev);
     private final VertDown m_vertDown = new VertDown(m_vertElev);
-    private final IntakeIn m_intakeIn = new IntakeIn(m_intake);
-    private final IntakeOut m_intakeOut = new IntakeOut(m_intake);
+    private final IntakeCubeIn m_intakeCubeIn = new IntakeCubeIn(m_intake);
+    private final IntakeCubeOut m_intakeCubeOut = new IntakeCubeOut(m_intake);
     private final HorizIn m_horizIn = new HorizIn(m_horizElev);
     private final HorizOut m_horizOut = new HorizOut(m_horizElev);
     private final WristIn m_wristIn = new WristIn(m_wrist);
@@ -66,16 +66,16 @@ public class RobotContainer {
       }
 
       private void configureButtonBindings() {
-      //   driverController2.lb().whileTrue();    can we make turn the drivetrain half speed with this?
-      //   driverController2.rb().whileTrue();    maybe flip drive direction with this? ill talk with marco and toshi
-        driverController2.a().whileTrue(m_intakeIn);
-        driverController2.b().whileTrue(m_wristIn);
-        driverController2.x().whileTrue(m_wristOut);
-        driverController2.y().whileTrue(m_intakeOut);
+        // driverController2.leftBumper().onTrue();    can we make turn the drivetrain half speed with this?
+        // driverController2.rightBumper().onTrue();    maybe flip drive direction with this? ill talk with marco and toshi
+        driverController2.a().whileTrue(m_intakeCubeIn);
+        driverController2.b().onTrue(m_wristIn.withTimeout(1));
+        driverController2.x().onTrue(m_wristOut.withTimeout(0.5));
+        driverController2.y().whileTrue(m_intakeCubeOut);
         driverController2.povUp().whileTrue(m_vertUp);
-        driverController2.povRight().whileTrue(m_horizIn);
-        driverController2.povLeft().whileTrue(m_horizOut);
         driverController2.povDown().whileTrue(m_vertDown);
+        driverController2.povLeft().whileTrue(m_horizOut);
+        driverController2.povRight().whileTrue(m_horizIn);
       //   driverController2.povDownRight().whileTrue();
       //   driverController2.povDownLeft().whileTrue();
       //   driverController2.povUpRight().whileTrue();
