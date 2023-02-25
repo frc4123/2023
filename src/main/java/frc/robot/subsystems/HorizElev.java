@@ -3,24 +3,25 @@ package frc.robot.subsystems;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMax.IdleMode;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
-import frc.robot.Constants.CanIdConstants;
 
 // import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-// import static frc.robot.Constants.*;
+import edu.wpi.first.math.controller.ElevatorFeedforward;
+
+import frc.robot.Constants.CanIdConstants;
 
 public class HorizElev extends SubsystemBase{
-    private CANSparkMax vert = new CANSparkMax(CanIdConstants.HORIZ_ELEV_ID, MotorType.kBrushless);
+    private CANSparkMax horiz = new CANSparkMax(CanIdConstants.HORIZ_ELEV_ID, MotorType.kBrushless);
+    private ElevatorFeedforward feedforward = new ElevatorFeedforward(0.14213, -0.01, 0.40918, 0.0072925);
 
-    /** Creates a new IntakeSubsystem*/
+    /** Creates a new Horizontal Subsystem*/
     public HorizElev(){
-        vert.setOpenLoopRampRate(0.7);
-        vert.setIdleMode(IdleMode.kBrake);
-        vert.clearFaults();
+        horiz.setOpenLoopRampRate(0.7);
+        horiz.setIdleMode(IdleMode.kBrake);
+        horiz.clearFaults();
     }
 
     public void setHorizVelo(double velo){
-        //command below needs fixing
-        vert.set(velo);
+      horiz.set(feedforward.calculate(velo));
     }
 }
