@@ -25,7 +25,7 @@ public class HorizElev extends SubsystemBase{
 
     private double setpoint = 0;
 
-    /** Creates a new IntakeSubsystem*/
+    /** Creates a new Horizontal Subsystem*/
     public HorizElev(){
         vert.setOpenLoopRampRate(0.7);
         vert.setIdleMode(IdleMode.kBrake);

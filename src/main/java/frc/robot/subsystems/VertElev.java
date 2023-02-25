@@ -25,7 +25,7 @@ public class VertElev extends SubsystemBase{
 
     private double setpoint = 0;
 
-    /** Creates a new IntakeSubsystem*/
+    /** Creates a new Vert Subsystem*/
     public VertElev(){
         vert.setOpenLoopRampRate(0.7);
         vert.setIdleMode(IdleMode.kBrake);
