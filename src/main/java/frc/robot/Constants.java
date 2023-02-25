@@ -66,4 +66,26 @@ public final class Constants {
         public static final int INTAKE_LEADER_ID = 9;
         public static final int WRIST_ID = 10;
     }
+    public static final class Tuning {
+        public static final double HORIZ_ELEV_PID_P = 0.873;
+        public static final double HORIZ_ELEV_PID_I = 0;
+        public static final double HORIZ_ELEV_PID_D = 0.015217;
+        public static final double HORIZ_ELEV_FF_S = 3.8764;
+        public static final double HORIZ_ELEV_FF_A = 0.066433;
+        public static final double HORIZ_ELEV_POSITION_IN = 1;
+        public static final double HORIZ_ELEV_POSITION_OUT = 18;
+        public static final double HORIZ_ELEV_CONSTRAINTS_VELOCITY = 40;
+        public static final double HORIZ_ELEV_CONSTRAINTS_ACCELERATION = 150;
+
+
+        public static final double VERT_ELEV_PID_P = 0.16423;
+        public static final double VERT_ELEV_PID_I = 0;
+        public static final double VERT_ELEV_PID_D = 0.021931;
+        public static final double VERT_ELEV_FF_S = 0.80362;
+        public static final double VERT_ELEV_FF_A = 0.25455;
+        public static final double VERT_ELEV_POSITION_DOWN = 1;
+        public static final double VERT_ELEV_POSITION_UP = 200;
+        public static final double VERT_ELEV_CONSTRAINTS_VELOCITY = 100;
+        public static final double VERT_ELEV_CONSTRAINTS_ACCELERATION = 120;
+    }
 }

@@ -1,7 +1,7 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-
+import frc.robot.Constants.Tuning;
 import frc.robot.subsystems.VertElev;
 
 public class VertUp extends CommandBase{
@@ -14,11 +14,11 @@ public class VertUp extends CommandBase{
 
     @Override
     public void execute() {
-        vertElev.setVertVelo(-0.5);
+        vertElev.setPosition(Tuning.VERT_ELEV_POSITION_UP);
     }
 
     @Override
     public void end(boolean interrupted) {
-        vertElev.setVertVelo(0);
+        // vertElev.setVertVelo(0);
     }
 }

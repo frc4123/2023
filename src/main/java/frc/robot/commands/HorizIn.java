@@ -4,6 +4,8 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 
 import frc.robot.subsystems.HorizElev;
 
+import static frc.robot.Constants.*;
+
 public class HorizIn extends CommandBase{
     HorizElev horizElev;
 
@@ -14,11 +16,14 @@ public class HorizIn extends CommandBase{
 
     @Override
     public void execute() {
-        horizElev.setHorizVelo(-0.237);
+        horizElev.setPosition(Tuning.HORIZ_ELEV_POSITION_IN);
+
+        
     }
 
     @Override
     public void end(boolean interrupted) {
-        horizElev.setHorizVelo(0);
+        // TODO: Come back to this
+        // horizElev.setHorizVelo(0);
     }
 }

@@ -74,8 +74,8 @@ public class RobotContainer {
         driverController2.y().whileTrue(m_intakeCubeOut);
         driverController2.povUp().whileTrue(m_vertUp);
         driverController2.povDown().whileTrue(m_vertDown);
-        driverController2.povLeft().whileTrue(m_horizOut);
-        driverController2.povRight().whileTrue(m_horizIn);
+        driverController2.povLeft().whileTrue(m_horizIn);
+        driverController2.povRight().whileTrue(m_horizOut);
       //   driverController2.povDownRight().whileTrue();
       //   driverController2.povDownLeft().whileTrue();
       //   driverController2.povUpRight().whileTrue();
