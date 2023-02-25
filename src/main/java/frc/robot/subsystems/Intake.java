@@ -12,7 +12,7 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 public class Intake extends SubsystemBase{
     private CANSparkMax intakeLeader = new CANSparkMax(CanIdConstants.INTAKE_LEADER_ID, MotorType.kBrushless);
 
-    /** Creates a new IntakeSubsystem*/
+    /** Creates a new Intake Subsystem*/
     public Intake(){
         intakeLeader.setOpenLoopRampRate(0.7);
         intakeLeader.setIdleMode(IdleMode.kBrake);
