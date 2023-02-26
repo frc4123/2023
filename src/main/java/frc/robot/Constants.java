@@ -78,14 +78,24 @@ public final class Constants {
         public static final double HORIZ_ELEV_CONSTRAINTS_ACCELERATION = 150;
 
 
-        public static final double VERT_ELEV_PID_P = 0.16423;
+        public static final double VERT_ELEV_PID_P = 0.0086423;
         public static final double VERT_ELEV_PID_I = 0;
         public static final double VERT_ELEV_PID_D = 0.021931;
         public static final double VERT_ELEV_FF_S = 0.80362;
         public static final double VERT_ELEV_FF_A = 0.25455;
-        public static final double VERT_ELEV_POSITION_DOWN = 1;
-        public static final double VERT_ELEV_POSITION_UP = 200;
-        public static final double VERT_ELEV_CONSTRAINTS_VELOCITY = 100;
-        public static final double VERT_ELEV_CONSTRAINTS_ACCELERATION = 120;
+        public static final double VERT_ELEV_POSITION_DOWN = 1; // 0
+        public static final double VERT_ELEV_POSITION_UP = 28; //29.21
+        public static final double VERT_ELEV_CONSTRAINTS_VELOCITY = 500;
+        public static final double VERT_ELEV_CONSTRAINTS_ACCELERATION = 1200;
+
+        public static final double WRIST_PID_P = 0.27155;
+        public static final double WRIST_PID_I = 0;
+        public static final double WRIST_PID_D = 0;
+        public static final double WRIST_FF_S = 0.80362;
+        public static final double WRIST_FF_A = 0.25455;
+        public static final double WRIST_POSITION_IN = 1;
+        public static final double WRIST_POSITION_OUT = 64; //50
+        public static final double WRIST_CONSTRAINTS_VELOCITY = 500;
+        public static final double WRIST_CONSTRAINTS_ACCELERATION = 50;
     }
 }

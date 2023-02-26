@@ -69,8 +69,8 @@ public class RobotContainer {
         // driverController2.leftBumper().onTrue();    can we make turn the drivetrain half speed with this?
         // driverController2.rightBumper().onTrue();    maybe flip drive direction with this? ill talk with marco and toshi
         driverController2.a().whileTrue(m_intakeCubeIn);
-        driverController2.b().onTrue(m_wristIn.withTimeout(1));
-        driverController2.x().onTrue(m_wristOut.withTimeout(0.5));
+        driverController2.b().whileTrue(m_wristIn);
+        driverController2.x().whileTrue(m_wristOut);
         driverController2.y().whileTrue(m_intakeCubeOut);
         driverController2.povUp().whileTrue(m_vertUp);
         driverController2.povDown().whileTrue(m_vertDown);

@@ -5,6 +5,7 @@ import com.revrobotics.CANSparkMax.ControlType;
 import com.revrobotics.CANSparkMax.IdleMode;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 import frc.robot.Constants.CanIdConstants;
+import edu.wpi.first.math.controller.ElevatorFeedforward;
 import edu.wpi.first.math.controller.SimpleMotorFeedforward;
 import edu.wpi.first.math.trajectory.TrapezoidProfile;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -14,7 +15,7 @@ import static frc.robot.Constants.*;
 public class VertElev extends SubsystemBase{
     private CANSparkMax vert = new CANSparkMax(CanIdConstants.VERT_ELEV_ID, MotorType.kBrushless);
 
-    private final SimpleMotorFeedforward m_feedforward = new SimpleMotorFeedforward(Tuning.VERT_ELEV_FF_S, 0, Tuning.VERT_ELEV_FF_A);
+    private final ElevatorFeedforward m_feedforward = new ElevatorFeedforward(Tuning.VERT_ELEV_FF_S, 0, 0, Tuning.VERT_ELEV_FF_A);
   
     private final TrapezoidProfile.Constraints m_constraints =
         new TrapezoidProfile.Constraints(Tuning.VERT_ELEV_CONSTRAINTS_VELOCITY, Tuning.VERT_ELEV_CONSTRAINTS_ACCELERATION);
