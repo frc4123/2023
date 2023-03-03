@@ -49,8 +49,6 @@ public class RobotContainer {
     private final SendableChooser<Command> m_autoChooser = new SendableChooser<Command>();
 
     public void initializeSubsystems() {
-      m_drivetrain.execute();
-
       // add negative (-) to getLeftY to invert drive
       m_drivetrain.setDefaultCommand(
           new SetDrivetrain(
