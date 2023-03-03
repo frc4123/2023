@@ -1,6 +1,7 @@
 package frc.robot.subsystems;
 
 import com.revrobotics.CANSparkMax;
+import com.revrobotics.SparkMaxLimitSwitch;
 import com.revrobotics.CANSparkMax.ControlType;
 import com.revrobotics.CANSparkMax.IdleMode;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
@@ -14,6 +15,7 @@ import static frc.robot.Constants.*;
 
 public class Wrist extends SubsystemBase{
     private CANSparkMax wrist = new CANSparkMax(CanIdConstants.WRIST_ID, MotorType.kBrushless);
+    private SparkMaxLimitSwitch m_forwardLimit = wrist.getReverseLimitSwitch(SparkMaxLimitSwitch.Type.kNormallyOpen);
 
     private final ArmFeedforward m_feedforward = new ArmFeedforward(Tuning.WRIST_FF_S, 0, Tuning.WRIST_FF_A);
     /** Creates a new IntakeSubsystem*/
@@ -45,6 +47,7 @@ public class Wrist extends SubsystemBase{
     public void periodic() {
       // This method will be called once per scheduler run
       internalSetPosition(setpoint);
+      SmartDashboard.putBoolean("Is wrist down?", !(m_forwardLimit.isPressed()));
     }
 
     public void setPosition(double position) {
@@ -75,10 +78,4 @@ public class Wrist extends SubsystemBase{
           0,
           m_feedforward.calculate(m_setpoint.position, m_setpoint.velocity) / 12.0);
     }
-
-
-
-    // public void execute() {
-    //     SmartDashboard.putBoolean("Is wrist down?", true);
-    // }
 }
