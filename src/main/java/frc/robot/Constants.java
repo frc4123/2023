@@ -86,7 +86,7 @@ public final class Constants {
         public static final double VERT_ELEV_POSITION_DOWN = 4; // 0
         public static final double VERT_ELEV_POSITION_UP = 31; //29.21
         public static final double VERT_ELEV_CONSTRAINTS_VELOCITY = 500;
-        public static final double VERT_ELEV_CONSTRAINTS_ACCELERATION = 600;
+        public static final double VERT_ELEV_CONSTRAINTS_ACCELERATION = 150;
 
         public static final double WRIST_PID_P = 0.27155;
         public static final double WRIST_PID_I = 0;
