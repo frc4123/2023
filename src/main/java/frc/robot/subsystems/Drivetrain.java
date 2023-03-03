@@ -50,7 +50,7 @@ public class Drivetrain extends SubsystemBase{
 
     @Override
     public void periodic() {
-        SmartDashboard.putNumber("Left Output", leftLeader.getAppliedOutput());
-        SmartDashboard.putNumber("Right Output", rightLeader.getAppliedOutput());
+        SmartDashboard.putNumber("Left Output", leftLeader.getOutputCurrent());
+        SmartDashboard.putNumber("Right Output", rightLeader.getOutputCurrent());
     }
 }
