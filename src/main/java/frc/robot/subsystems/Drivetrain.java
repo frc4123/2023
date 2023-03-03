@@ -47,7 +47,9 @@ public class Drivetrain extends SubsystemBase{
     public void arcadeDrive(double speed, double direction){
         differentialDrive.arcadeDrive(speed, direction);
       }
-    public void execute() {
+
+    @Override
+    public void periodic() {
         SmartDashboard.putNumber("Left Output", leftLeader.getAppliedOutput());
         SmartDashboard.putNumber("Right Output", rightLeader.getAppliedOutput());
     }
