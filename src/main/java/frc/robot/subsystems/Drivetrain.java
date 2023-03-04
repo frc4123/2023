@@ -23,6 +23,9 @@ public class Drivetrain extends SubsystemBase{
         leftLeader.clearFaults();
         leftFollower.clearFaults();
 
+        leftLeader.setInverted(true);
+        leftFollower.setInverted(true);
+
         rightLeader.setOpenLoopRampRate(0.5);
         rightFollower.setOpenLoopRampRate(0.5);
         leftLeader.setOpenLoopRampRate(0.5);
