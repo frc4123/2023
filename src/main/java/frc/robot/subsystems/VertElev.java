@@ -15,7 +15,7 @@ import static frc.robot.Constants.*;
 public class VertElev extends SubsystemBase{
     private CANSparkMax vert = new CANSparkMax(CanIdConstants.VERT_ELEV_ID, MotorType.kBrushless);
 
-    private final ElevatorFeedforward m_feedforward = new ElevatorFeedforward(Tuning.VERT_ELEV_FF_S, -.03, 0.01, Tuning.VERT_ELEV_FF_A);
+    private final ElevatorFeedforward m_feedforward = new ElevatorFeedforward(Tuning.VERT_ELEV_FF_S, Tuning.VERT_ELEV_FF_G, Tuning.VERT_ELEV_FF_V, Tuning.VERT_ELEV_FF_A);
   
     private double x = Tuning.VERT_ELEV_CONSTRAINTS_ACCELERATION;
 
