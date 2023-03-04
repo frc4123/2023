@@ -23,8 +23,8 @@ public class Drivetrain extends SubsystemBase{
         leftLeader.clearFaults();
         leftFollower.clearFaults();
 
-        leftLeader.setInverted(true);
-        leftFollower.setInverted(true);
+        rightLeader.setInverted(true);
+        rightFollower.setInverted(true);
 
         rightLeader.setOpenLoopRampRate(0.5);
         rightFollower.setOpenLoopRampRate(0.5);
@@ -36,7 +36,7 @@ public class Drivetrain extends SubsystemBase{
         leftLeader.setSmartCurrentLimit(40);
         leftFollower.setSmartCurrentLimit(40);
 
-        rightLeader.setIdleMode(IdleMode.kBrake);   
+        rightLeader.setIdleMode(IdleMode.kBrake);
         rightFollower.setIdleMode(IdleMode.kBrake);
         leftLeader.setIdleMode(IdleMode.kBrake);
         leftFollower.setIdleMode(IdleMode.kBrake);
@@ -48,8 +48,6 @@ public class Drivetrain extends SubsystemBase{
         rightFollower.burnFlash();
         leftLeader.burnFlash();
         leftFollower.burnFlash();
-
-        differentialDrive.feed();
     }
         //left leader is speed, right leader is direction
     public void arcadeDrive(double speed, double direction){
@@ -60,5 +58,6 @@ public class Drivetrain extends SubsystemBase{
     public void periodic() {
         SmartDashboard.putNumber("Left Output", leftLeader.getOutputCurrent());
         SmartDashboard.putNumber("Right Output", rightLeader.getOutputCurrent());
+        differentialDrive.feed();
     }
 }
