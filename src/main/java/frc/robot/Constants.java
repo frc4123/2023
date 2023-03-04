@@ -66,6 +66,7 @@ public final class Constants {
         public static final int INTAKE_LEADER_ID = 9;
         public static final int WRIST_ID = 10;
     }
+    
     public static final class Tuning {
         public static final double HORIZ_ELEV_PID_P = 0.873;
         public static final double HORIZ_ELEV_PID_I = 0;
