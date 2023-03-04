@@ -17,8 +17,10 @@ public class VertElev extends SubsystemBase{
 
     private final ElevatorFeedforward m_feedforward = new ElevatorFeedforward(Tuning.VERT_ELEV_FF_S, -.03, 0.01, Tuning.VERT_ELEV_FF_A);
   
-    private final TrapezoidProfile.Constraints m_constraints =
-        new TrapezoidProfile.Constraints(Tuning.VERT_ELEV_CONSTRAINTS_VELOCITY, Tuning.VERT_ELEV_CONSTRAINTS_ACCELERATION);
+    private double x = Tuning.VERT_ELEV_CONSTRAINTS_ACCELERATION;
+
+    private TrapezoidProfile.Constraints m_constraints =
+        new TrapezoidProfile.Constraints(Tuning.VERT_ELEV_CONSTRAINTS_VELOCITY, x);
     private TrapezoidProfile.State m_goal = new TrapezoidProfile.State();
     private TrapezoidProfile.State m_setpoint = new TrapezoidProfile.State();
   

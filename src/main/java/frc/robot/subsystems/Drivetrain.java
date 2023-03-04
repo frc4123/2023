@@ -41,6 +41,11 @@ public class Drivetrain extends SubsystemBase{
         leftFollower.follow(leftLeader);
         rightFollower.follow(rightLeader);
 
+        rightLeader.burnFlash();
+        rightFollower.burnFlash();
+        leftLeader.burnFlash();
+        leftFollower.burnFlash();
+
         differentialDrive.feed();
     }
         //left leader is speed, right leader is direction
