@@ -15,6 +15,7 @@ public class VertDown extends CommandBase{
     @Override
     public void execute() {
         vertElev.setPosition(Tuning.VERT_ELEV_POSITION_DOWN);
+        // vertElev.setVertVelo(0.4123);
     }
 
     @Override

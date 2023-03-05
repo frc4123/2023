@@ -15,6 +15,7 @@ public class VertUp extends CommandBase{
     @Override
     public void execute() {
         vertElev.setPosition(Tuning.VERT_ELEV_POSITION_UP);
+        // vertElev.setVertVelo(0.5);
     }
 
     @Override
