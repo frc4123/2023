@@ -83,9 +83,9 @@ public final class Constants {
         public static final double HORIZ_ELEV_CONSTRAINTS_ACCELERATION = 150;
 
 
-        public static final double VERT_ELEV_PID_P = 0.04123;
+        
         // Verticle Elevator Constants
-        public static final double VERT_ELEV_PID_P = 0.086423;
+        public static final double VERT_ELEV_PID_P = 0.04123;
         public static final double VERT_ELEV_PID_I = 0;
         public static final double VERT_ELEV_PID_D = 0;
         public static final double VERT_ELEV_FF_S = 0;
