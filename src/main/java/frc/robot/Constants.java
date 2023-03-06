@@ -4,6 +4,8 @@
 
 package frc.robot;
 
+import edu.wpi.first.math.kinematics.DifferentialDriveKinematics;
+
 public final class Constants {
     /** USB ports on the computer */
     public static final class UsbConstants {
@@ -67,6 +69,8 @@ public final class Constants {
         public static final int WRIST_ID = 10;
     }
     public static final class Tuning {
+
+        // Horizontal Elevator Constants
         public static final double HORIZ_ELEV_PID_P = 0.873;
         public static final double HORIZ_ELEV_PID_I = 0;
         public static final double HORIZ_ELEV_PID_D = 0.015217;
@@ -77,7 +81,7 @@ public final class Constants {
         public static final double HORIZ_ELEV_CONSTRAINTS_VELOCITY = 40;
         public static final double HORIZ_ELEV_CONSTRAINTS_ACCELERATION = 150;
 
-
+        // Verticle Elevator Constants
         public static final double VERT_ELEV_PID_P = 0.086423;
         public static final double VERT_ELEV_PID_I = 0;
         public static final double VERT_ELEV_PID_D = 0.021931;
@@ -88,6 +92,7 @@ public final class Constants {
         public static final double VERT_ELEV_CONSTRAINTS_VELOCITY = 500;
         public static final double VERT_ELEV_CONSTRAINTS_ACCELERATION = 60;
 
+        // Wrist Constants
         public static final double WRIST_PID_P = 0.27155;
         public static final double WRIST_PID_I = 0;
         public static final double WRIST_PID_D = 0;
@@ -97,5 +102,31 @@ public final class Constants {
         public static final double WRIST_POSITION_OUT = 64; //50
         public static final double WRIST_CONSTRAINTS_VELOCITY = 500;
         public static final double WRIST_CONSTRAINTS_ACCELERATION = 50;
+
+        // Drivetrain Constants
+        //Position PID
+        public static final double Drivetrain_Position_Kp = 25.049;
+        public static final double Drivetrain_Position_Ki = 0;
+        public static final double Drivetrain_Position_Kd = 0.9254;
+        //Velocity PID
+        public static final double Drivetrain_Velocity_Kp = 0.0014708;
+        public static final double Drivetrain_Velocity_Ki = 0;
+        public static final double Drivetrain_Velocity_Kd = 0;
+        public static final double Drivetrain_Position_Max_Position_Error = 0.039898;
+        public static final double Drivetrain_Position_Max_Velocity_Error = 4.2947;
+        public static final double Drivetrain_Position_Max_Control_Effort = 7;
+        public static final double kTrackwidthMeters = 0.69; // this is not tuned for our robot
+        public static final DifferentialDriveKinematics kDriveKinematics = new DifferentialDriveKinematics(Tuning.kTrackwidthMeters);
+        public static final double kEncoderDistancePerPulse = 0.665; // we're not sure about this one
+        public static final double ksVolts = 0.10703;
+        public static final double kvVoltSecondsPerMeter = 0.69231;
+        public static final double kaVoltSecondsSquaredPerMeter = 0.13482;
+    }
+    public static final class AutoConstants{
+        // Drivetrain
+        public static final double kMaxSpeedMetersPerSecond = 3; // this is not tuned for our robot
+        public static final double kMaxAccelerationMetersPerSecondSquared = 1; // this is not tuned for our robot
+        public static final double kRamseteB = 2; // this is not tuned for our robot
+        public static final double kRamseteZeta = 0.7; // this is not tuned for our robot
     }
 }
