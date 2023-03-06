@@ -68,6 +68,7 @@ public final class Constants {
         public static final int INTAKE_LEADER_ID = 9;
         public static final int WRIST_ID = 10;
     }
+
     public static final class Tuning {
 
         // Horizontal Elevator Constants
@@ -81,16 +82,20 @@ public final class Constants {
         public static final double HORIZ_ELEV_CONSTRAINTS_VELOCITY = 40;
         public static final double HORIZ_ELEV_CONSTRAINTS_ACCELERATION = 150;
 
+
+        public static final double VERT_ELEV_PID_P = 0.04123;
         // Verticle Elevator Constants
         public static final double VERT_ELEV_PID_P = 0.086423;
         public static final double VERT_ELEV_PID_I = 0;
-        public static final double VERT_ELEV_PID_D = 0.021931;
-        public static final double VERT_ELEV_FF_S = 0.80362;
-        public static final double VERT_ELEV_FF_A = 0.025455;
-        public static final double VERT_ELEV_POSITION_DOWN = 4; // 0
-        public static final double VERT_ELEV_POSITION_UP = 35; //29.21
-        public static final double VERT_ELEV_CONSTRAINTS_VELOCITY = 500;
-        public static final double VERT_ELEV_CONSTRAINTS_ACCELERATION = 60;
+        public static final double VERT_ELEV_PID_D = 0;
+        public static final double VERT_ELEV_FF_S = 0;
+        public static final double VERT_ELEV_FF_V = 0;
+        public static final double VERT_ELEV_FF_A = 0;
+        public static final double VERT_ELEV_FF_G = 0;
+        public static final double VERT_ELEV_POSITION_DOWN = 0;
+        public static final double VERT_ELEV_POSITION_UP = 115;
+        public static final double VERT_ELEV_CONSTRAINTS_VELOCITY = 150;
+        public static final double VERT_ELEV_CONSTRAINTS_ACCELERATION = 240;
 
         // Wrist Constants
         public static final double WRIST_PID_P = 0.27155;

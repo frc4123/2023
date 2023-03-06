@@ -40,6 +40,9 @@ public class Drivetrain extends SubsystemBase{
         leftLeader.clearFaults();
         leftFollower.clearFaults();
 
+        rightLeader.setInverted(true);
+        rightFollower.setInverted(true);
+
         rightLeader.setOpenLoopRampRate(0.5);
         rightFollower.setOpenLoopRampRate(0.5);
         leftLeader.setOpenLoopRampRate(0.5);
@@ -50,7 +53,7 @@ public class Drivetrain extends SubsystemBase{
         leftLeader.setSmartCurrentLimit(40);
         leftFollower.setSmartCurrentLimit(40);
 
-        rightLeader.setIdleMode(IdleMode.kBrake);   
+        rightLeader.setIdleMode(IdleMode.kBrake);
         rightFollower.setIdleMode(IdleMode.kBrake);
         leftLeader.setIdleMode(IdleMode.kBrake);
         leftFollower.setIdleMode(IdleMode.kBrake);
@@ -91,6 +94,7 @@ public class Drivetrain extends SubsystemBase{
         SmartDashboard.putNumber("Odometry X", m_odometry.getPoseMeters().getX());
         SmartDashboard.putNumber("Odometry Y", m_odometry.getPoseMeters().getY());
         SmartDashboard.putNumber("Odometry Heading", m_odometry.getPoseMeters().getRotation().getDegrees());
+        differentialDrive.feed();
     }
 
 
