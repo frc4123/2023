@@ -8,20 +8,18 @@ import edu.wpi.first.wpilibj2.command.WaitCommand;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 
 import frc.robot.Constants.UsbConstants;
-
-import frc.robot.commands.HorizIn;
-import frc.robot.commands.HorizOut;
-import frc.robot.commands.IntakeCubeIn;
-import frc.robot.commands.IntakeCubeOut;
-import frc.robot.commands.SetVertSetpoint;
-import frc.robot.commands.VertDown;
-import frc.robot.commands.VertUp;
-import frc.robot.commands.WristIn;
-import frc.robot.commands.WristOut;
 import frc.robot.commands.auto.AutoDriveBackCommand;
 // import frc.robot.commands.auto.DockDrive;
 import frc.robot.commands.drivetrain.SetDrivetrain;
-
+import frc.robot.commands.horizontal.HorizIn;
+import frc.robot.commands.horizontal.HorizOut;
+import frc.robot.commands.intake.IntakeCubeIn;
+import frc.robot.commands.intake.IntakeCubeOut;
+import frc.robot.commands.vertical.SetVertSetpoint;
+import frc.robot.commands.vertical.VertDown;
+import frc.robot.commands.vertical.VertUp;
+import frc.robot.commands.wrist.WristIn;
+import frc.robot.commands.wrist.WristOut;
 import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.HorizElev;
 import frc.robot.subsystems.Intake;
