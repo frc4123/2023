@@ -54,6 +54,14 @@ public class VertElev extends SubsystemBase{
 
     public void setPosition(double position) {
         setpoint = position;
+        setpoint = Math.max(setpoint, Tuning.VERT_ELEV_POSITION_UP);
+        setpoint = Math.min(setpoint, Tuning.VERT_ELEV_POSITION_DOWN);
+
+        System.out.println("Hello i am setting setPosition setpoint"+ setpoint + "from position" + position);
+    }
+
+    public double getPosition() {
+        return m_setpoint.position;
     }
 
     private void internalSetPosition(double position) {
@@ -63,6 +71,7 @@ public class VertElev extends SubsystemBase{
 
         SmartDashboard.putNumber("VertElev Position", vert.getEncoder().getPosition());
         SmartDashboard.putNumber("VertElev Velocity", vert.getEncoder().getVelocity());
+        SmartDashboard.putNumber("VertElev Internal Setpoint", setpoint);
   
         // Create a motion profile with the given maximum velocity and maximum
         // acceleration constraints for the next setpoint, the desired goal, and the

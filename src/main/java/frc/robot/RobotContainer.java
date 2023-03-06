@@ -13,6 +13,7 @@ import frc.robot.commands.HorizIn;
 import frc.robot.commands.HorizOut;
 import frc.robot.commands.IntakeCubeIn;
 import frc.robot.commands.IntakeCubeOut;
+import frc.robot.commands.SetVertSetpoint;
 import frc.robot.commands.VertDown;
 import frc.robot.commands.VertUp;
 import frc.robot.commands.WristIn;
@@ -66,14 +67,32 @@ public class RobotContainer {
       private void configureButtonBindings() {
         // driverController2.leftBumper().onTrue();    can we make turn the drivetrain half speed with this?
         // driverController2.rightBumper().onTrue();    maybe flip drive direction with this? ill talk with marco and toshi
-        driverController2.a().whileTrue(m_intakeCubeIn);
+        // driverController2.a().whileTrue(m_intakeCubeIn);
         driverController2.b().whileTrue(m_wristIn);
         driverController2.x().whileTrue(m_wristOut);
-        driverController2.y().whileTrue(m_intakeCubeOut);
-        driverController2.povUp().whileTrue(m_vertUp);
-        driverController2.povDown().whileTrue(m_vertDown);
+        // driverController2.y().whileTrue(m_intakeCubeOut);
+        // driverController2.povUp().whileTrue(m_vertUp);
+        // driverController2.povDown().whileTrue(m_vertDown);
         driverController2.povLeft().whileTrue(m_horizIn);
         driverController2.povRight().whileTrue(m_horizOut);
+
+        // driverController2.leftStick().whileTrue(
+        //   new SetVertSetpoint(
+        //     m_vertElev, driverController2::getRightY
+        //   )
+        // );
+
+        driverController2.y().whileTrue(
+          new SetVertSetpoint(
+            m_vertElev, () -> 1
+          )
+        );
+        driverController2.a().whileTrue(
+          new SetVertSetpoint(
+            m_vertElev, () -> -1
+          )
+        );
+        // driverController2.axisGreaterThan(0, 0)
       //   driverController2.povDownRight().whileTrue();
       //   driverController2.povDownLeft().whileTrue();
       //   driverController2.povUpRight().whileTrue();
