@@ -10,6 +10,7 @@ import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.kinematics.DifferentialDriveOdometry;
 import edu.wpi.first.math.kinematics.DifferentialDriveWheelSpeeds;
 import edu.wpi.first.math.kinematics.DifferentialDriveKinematics;
+import edu.wpi.first.wpilibj.PowerDistribution;
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
@@ -25,16 +26,17 @@ public class Drivetrain extends SubsystemBase{
     private CANSparkMax rightFollower = new CANSparkMax(CanIdConstants.RIGHT_FOLLOWER_ID, MotorType.kBrushless);
     private CANSparkMax leftLeader = new CANSparkMax(CanIdConstants.LEFT_LEADER_ID, MotorType.kBrushless);
     private CANSparkMax leftFollower = new CANSparkMax(CanIdConstants.LEFT_FOLLOWER_ID, MotorType.kBrushless);
+    private final PowerDistribution pdh = new PowerDistribution();
 
     
     private final Gyro m_gyro = new ADXRS450_Gyro();
     private final DifferentialDriveOdometry m_odometry;
 
-
-
     private final DifferentialDrive differentialDrive = new DifferentialDrive(leftLeader, rightLeader);
 
     public Drivetrain() {
+        pdh.clearStickyFaults();
+
         rightLeader.clearFaults();
         rightFollower.clearFaults();
         leftLeader.clearFaults();
@@ -78,23 +80,28 @@ public class Drivetrain extends SubsystemBase{
         leftLeader.burnFlash();
         leftFollower.burnFlash();
         
-        m_odometry = new DifferentialDriveOdometry(m_gyro.getRotation2d(), leftLeader.getEncoder().getPosition(), rightLeader.getEncoder().getPosition());
-        differentialDrive.feed();
+        m_odometry = 
+          new DifferentialDriveOdometry(
+            m_gyro.getRotation2d(),
+            leftLeader.getEncoder().getPosition(),
+            rightLeader.getEncoder().getPosition()
+            );
     }
 
     @Override
     public void periodic() {
-        SmartDashboard.putNumber("Left Output", leftLeader.getOutputCurrent());
-        SmartDashboard.putNumber("Right Output", rightLeader.getOutputCurrent());
-        m_odometry.update(
-            m_gyro.getRotation2d(), 
-            leftLeader.getEncoder().getPosition(), 
-            rightLeader.getEncoder().getPosition()
-        );
-        SmartDashboard.putNumber("Odometry X", m_odometry.getPoseMeters().getX());
-        SmartDashboard.putNumber("Odometry Y", m_odometry.getPoseMeters().getY());
-        SmartDashboard.putNumber("Odometry Heading", m_odometry.getPoseMeters().getRotation().getDegrees());
-        differentialDrive.feed();
+      SmartDashboard.putNumber("Battery Voltage", pdh.getVoltage());
+      SmartDashboard.putNumber("Left Output", leftLeader.getOutputCurrent());
+      SmartDashboard.putNumber("Right Output", rightLeader.getOutputCurrent());
+      m_odometry.update(
+          m_gyro.getRotation2d(), 
+          leftLeader.getEncoder().getPosition(), 
+          rightLeader.getEncoder().getPosition()
+      );
+      SmartDashboard.putNumber("Odometry X", m_odometry.getPoseMeters().getX());
+      SmartDashboard.putNumber("Odometry Y", m_odometry.getPoseMeters().getY());
+      SmartDashboard.putNumber("Odometry Heading", m_odometry.getPoseMeters().getRotation().getDegrees());
+      differentialDrive.feed();
     }
 
 

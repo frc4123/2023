@@ -2,16 +2,17 @@
 // Open Source Software; you can modify and/or share it under the terms of
 // the WPILib BSD license file in the root directory of this project.
 
-package frc.robot.commands;
+package frc.robot.commands.vertical;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.VertElev;
 import java.util.function.DoubleSupplier;
+import edu.wpi.first.math.MathUtil;
 
 public class SetVertSetpoint extends CommandBase {
-  private final VertElev m_vert;
+  private VertElev m_vert;
   // private double m_setpoint;
-  private final DoubleSupplier m_input;
+  private DoubleSupplier m_input;
 
   public SetVertSetpoint(VertElev vert, DoubleSupplier input) {
     m_vert = vert;
@@ -33,11 +34,16 @@ public class SetVertSetpoint extends CommandBase {
   @Override
   public void execute() {
     // System.out.println(m_vert.getPosition() + m_input.getAsDouble()*1);
-    double position = m_vert.getPosition();
-    double delta = m_input.getAsDouble()*30;
-    double newSetpoint = position + delta;
-    System.out.println("position:" + position + "\tdelta"+delta + "\tnewSetpoint" + newSetpoint);
-    m_vert.setPosition(newSetpoint);
+
+    // double position = m_vert.getPosition();
+    // double delta = m_input.getAsDouble()*30;
+    // double newSetpoint = position + delta;
+    // System.out.println("position:" + position + "\tdelta"+delta + "\tnewSetpoint" + newSetpoint);
+    // m_vert.setPosition(newSetpoint);
+    // if (m_vert.getControlState() == Elevator.State.CONTROL_MODE) {
+    //   m_vert.setDesiredPositionMeters(m_vert.getHeightMeters());
+    //   m_vert.SetPosition(0);
+    // }
   }
 
   // Called once the command ends or is interrupted.

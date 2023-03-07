@@ -93,6 +93,7 @@ public final class Constants {
         public static final double VERT_ELEV_FF_A = 0;
         public static final double VERT_ELEV_FF_G = 0;
         public static final double VERT_ELEV_POSITION_DOWN = 0;
+        public static final double VERT_ELEV_POSITION_CONE = 35;
         public static final double VERT_ELEV_POSITION_UP = 115;
         public static final double VERT_ELEV_CONSTRAINTS_VELOCITY = 150;
         public static final double VERT_ELEV_CONSTRAINTS_ACCELERATION = 240;
