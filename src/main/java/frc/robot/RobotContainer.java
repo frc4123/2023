@@ -17,6 +17,7 @@ import frc.robot.commands.intake.IntakeCubeIn;
 import frc.robot.commands.intake.IntakeCubeOut;
 import frc.robot.commands.vertical.SetVertSetpoint;
 import frc.robot.commands.vertical.VertDown;
+import frc.robot.commands.vertical.VertCone;
 import frc.robot.commands.vertical.VertUp;
 import frc.robot.commands.wrist.WristIn;
 import frc.robot.commands.wrist.WristOut;
@@ -33,10 +34,11 @@ public class RobotContainer {
     private final HorizElev m_horizElev = new HorizElev();
     private final Wrist m_wrist = new Wrist();
 
-    private final XboxController driverController = new XboxController(UsbConstants.DRIVER_CONTROLLER_PORT);
+    private final CommandXboxController driverController = new CommandXboxController(UsbConstants.DRIVER_CONTROLLER_PORT);
     private final CommandXboxController driverController2 = new CommandXboxController(UsbConstants.AUXDRIVER_CONTROLLER_PORT);
 
     private final VertUp m_vertUp = new VertUp(m_vertElev);
+    private final VertCone m_vertCone = new VertCone(m_vertElev);
     private final VertDown m_vertDown = new VertDown(m_vertElev);
     private final IntakeCubeIn m_intakeCubeIn = new IntakeCubeIn(m_intake);
     private final IntakeCubeOut m_intakeCubeOut = new IntakeCubeOut(m_intake);
@@ -62,35 +64,36 @@ public class RobotContainer {
         initializeAutoChooser();
       }
 
-      private void configureButtonBindings() {
-        // driverController2.leftBumper().onTrue();    can we make turn the drivetrain half speed with this?
-        // driverController2.rightBumper().onTrue();    maybe flip drive direction with this? ill talk with marco and toshi
-        // driverController2.a().whileTrue(m_intakeCubeIn);
-        driverController2.b().whileTrue(m_wristIn);
-        driverController2.x().whileTrue(m_wristOut);
-        // driverController2.y().whileTrue(m_intakeCubeOut);
-        // driverController2.povUp().whileTrue(m_vertUp);
-        // driverController2.povDown().whileTrue(m_vertDown);
-        driverController2.povLeft().whileTrue(m_horizIn);
-        driverController2.povRight().whileTrue(m_horizOut);
+    private void configureButtonBindings() {
+      // driverController2.leftBumper().onTrue(new WaitCommand(0.1).andThen(m_toggleControl).withTimeout(0.5));    
+      // driverController2.rightBumper().onTrue(new WaitCommand(0.1).andThen(m_toggleSet).withTimeout(0.5));
+      driverController.a().whileTrue(m_intakeCubeIn);
+      driverController2.a().whileTrue(m_vertCone);
+      driverController2.b().whileTrue(m_wristIn);
+      driverController2.x().whileTrue(m_wristOut);
+      driverController.y().whileTrue(m_intakeCubeOut);
+      driverController2.povUp().whileTrue(m_vertUp);
+      driverController2.povDown().whileTrue(m_vertDown);
+      driverController2.povLeft().whileTrue(m_horizIn);
+      driverController2.povRight().whileTrue(m_horizOut);
 
-        // driverController2.leftStick().whileTrue(
-        //   new SetVertSetpoint(
-        //     m_vertElev, driverController2::getRightY
-        //   )
-        // );
+      // driverController2.leftStick().whileTrue(
+      //   new SetVertSetpoint(
+      //     m_vertElev, driverController2::getRightY
+      //   )
+      // );
 
-        driverController2.y().whileTrue(
-          new SetVertSetpoint(
-            m_vertElev, () -> 1
-          )
-        );
-        driverController2.a().whileTrue(
-          new SetVertSetpoint(
-            m_vertElev, () -> -1
-          )
-        );
-        // driverController2.axisGreaterThan(0, 0)
+      // driverController2.y().whileTrue(
+      //   new SetVertSetpoint(
+      //     m_vertElev, () -> 1
+      //   )
+      // );
+      // driverController2.a().whileTrue(
+      //   new SetVertSetpoint(
+      //     m_vertElev, () -> -1
+      //   )
+      // );
+      // driverController2.axisGreaterThan(0, 0)
       //   driverController2.povDownRight().whileTrue();
       //   driverController2.povDownLeft().whileTrue();
       //   driverController2.povUpRight().whileTrue();
