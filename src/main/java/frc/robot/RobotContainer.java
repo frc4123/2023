@@ -19,7 +19,7 @@ import frc.robot.commands.VertUp;
 import frc.robot.commands.WristIn;
 import frc.robot.commands.WristOut;
 import frc.robot.commands.auto.AutoDriveBackCommand;
-// import frc.robot.commands.auto.DockDrive;
+import frc.robot.commands.auto.AutoTrajectory;
 import frc.robot.commands.drivetrain.SetDrivetrain;
 
 import frc.robot.subsystems.Drivetrain;
@@ -107,6 +107,8 @@ public class RobotContainer {
           // .andThen(new DockDrive(drivetrain).withTimeout(5)));
         m_autoChooser.addOption("Drivetrain Test", new WaitCommand(0.1)
           .andThen(new AutoDriveBackCommand(m_drivetrain).withTimeout(5)));
+        m_autoChooser.addOption("brady test", new WaitCommand(0.1)
+        .andThen(new AutoTrajectory(m_drivetrain)).withTimeout(15));
       
        SmartDashboard.putData("Auto Selector", m_autoChooser);
       }
