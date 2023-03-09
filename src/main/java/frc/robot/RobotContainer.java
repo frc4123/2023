@@ -12,7 +12,6 @@ import frc.robot.commands.auto.DriveBackHalf;
 import frc.robot.commands.auto.DriveBackFull;
 import frc.robot.commands.auto.DriveForwardHalf;
 import frc.robot.commands.auto.DriveForwardFull;
-// import frc.robot.commands.auto.DockDrive;
 import frc.robot.commands.drivetrain.SetDrivetrain;
 import frc.robot.commands.horizontal.HorizIn;
 import frc.robot.commands.horizontal.HorizOut;
@@ -108,36 +107,36 @@ public class RobotContainer {
       //   driverController2.povDownLeft().whileTrue();
       //   driverController2.povUpRight().whileTrue();
       //   driverController2.povUpLeft().whileTrue();
-      }
+    }
 
-      public void initializeAutoChooser(){
-        m_autoChooser.setDefaultOption(
-            "Zone 1/3",
-            new WaitCommand(0.01)
-              .andThen(new VertDown(m_vertElev).withTimeout(0.2)
-              .alongWith(new HorizIn(m_horizElev).withTimeout(0.2))
-              .alongWith(new WristIn(m_wrist)).withTimeout(0.2))
-              .andThen(new VertUp(m_vertElev)).withTimeout(0.5)
-              .andThen(new WristOut(m_wrist).withTimeout(1.5))
-              .andThen(new IntakeCubeOut(m_intake).withTimeout(1))
-              .andThen(new WristIn(m_wrist).withTimeout(1.5)
-              .andThen(new VertDown(m_vertElev).withTimeout(0.3)
-              .andThen(new DriveBackHalf(m_drivetrain).withTimeout(6)))));
-        m_autoChooser.addOption(
-          "Zone 2",
-            new WaitCommand(0.01)
-              .andThen(new VertDown(m_vertElev).withTimeout(0.2)
-              .alongWith(new HorizIn(m_horizElev).withTimeout(0.2))
-              .alongWith(new WristIn(m_wrist)).withTimeout(0.2))
-              .andThen(new VertUp(m_vertElev)).withTimeout(0.5)
-              .andThen(new WristOut(m_wrist).withTimeout(1.5))
-              .andThen(new IntakeCubeOut(m_intake).withTimeout(1))
-              .andThen(new WristIn(m_wrist).withTimeout(1.5)
-              .andThen(new VertDown(m_vertElev).withTimeout(0.3)
-              .andThen(new DriveBackHalf(m_drivetrain).withTimeout(3.335)))));
+    public void initializeAutoChooser(){
+      m_autoChooser.setDefaultOption(
+          "Zone 1/3",
+          new WaitCommand(0.01)
+            .andThen(new VertDown(m_vertElev).withTimeout(0.2)
+            .alongWith(new HorizIn(m_horizElev).withTimeout(0.2))
+            .alongWith(new WristIn(m_wrist)).withTimeout(0.2))
+            .andThen(new VertUp(m_vertElev)).withTimeout(0.5)
+            .andThen(new WristOut(m_wrist).withTimeout(1.5))
+            .andThen(new IntakeCubeOut(m_intake).withTimeout(1))
+            .andThen(new WristIn(m_wrist).withTimeout(1.5)
+            .andThen(new VertDown(m_vertElev).withTimeout(0.3)
+            .andThen(new DriveBackHalf(m_drivetrain).withTimeout(6)))));
+      m_autoChooser.addOption(
+        "Zone 2",
+          new WaitCommand(0.01)
+            .andThen(new VertDown(m_vertElev).withTimeout(0.2)
+            .alongWith(new HorizIn(m_horizElev).withTimeout(0.2))
+            .alongWith(new WristIn(m_wrist)).withTimeout(0.2))
+            .andThen(new VertUp(m_vertElev)).withTimeout(0.5)
+            .andThen(new WristOut(m_wrist).withTimeout(1.5))
+            .andThen(new IntakeCubeOut(m_intake).withTimeout(1))
+            .andThen(new WristIn(m_wrist).withTimeout(1.5)
+            .andThen(new VertDown(m_vertElev).withTimeout(0.3)
+            .andThen(new DriveBackHalf(m_drivetrain).withTimeout(3.335)))));
       
        SmartDashboard.putData("Auto Selector", m_autoChooser);
-      }
+       }
       
       //before coding, discuss strategy with team
       public Command getAutonomousCommand() {
