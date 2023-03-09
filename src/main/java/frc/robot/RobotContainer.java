@@ -8,16 +8,11 @@ import edu.wpi.first.wpilibj2.command.WaitCommand;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 
 import frc.robot.Constants.UsbConstants;
-<<<<<<< HEAD
 import frc.robot.commands.auto.DriveBackHalf;
 import frc.robot.commands.auto.DriveBackFull;
 import frc.robot.commands.auto.DriveForwardHalf;
 import frc.robot.commands.auto.DriveForwardFull;
 // import frc.robot.commands.auto.DockDrive;
-=======
-import frc.robot.commands.auto.AutoDriveBackCommand;
-import frc.robot.commands.auto.AutoTrajectory;
->>>>>>> ca615011d26084884a42c0df0e71a6bce03b1015
 import frc.robot.commands.drivetrain.SetDrivetrain;
 import frc.robot.commands.horizontal.HorizIn;
 import frc.robot.commands.horizontal.HorizOut;

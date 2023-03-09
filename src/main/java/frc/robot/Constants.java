@@ -78,7 +78,7 @@ public final class Constants {
         public static final double HORIZ_ELEV_FF_S = 3.8764;
         public static final double HORIZ_ELEV_FF_A = 0.066433;
         public static final double HORIZ_ELEV_POSITION_IN = 1;
-        public static final double HORIZ_ELEV_POSITION_OUT = 18;
+        public static final double HORIZ_ELEV_POSITION_OUT = 20;
         public static final double HORIZ_ELEV_CONSTRAINTS_VELOCITY = 40;
         public static final double HORIZ_ELEV_CONSTRAINTS_ACCELERATION = 150;
 
@@ -94,7 +94,7 @@ public final class Constants {
         public static final double VERT_ELEV_FF_G = 0;
         public static final double VERT_ELEV_POSITION_DOWN = 0;
         public static final double VERT_ELEV_POSITION_CONE = 35;
-        public static final double VERT_ELEV_POSITION_UP = 115;
+        public static final double VERT_ELEV_POSITION_UP = 117;
         public static final double VERT_ELEV_CONSTRAINTS_VELOCITY = 150;
         public static final double VERT_ELEV_CONSTRAINTS_ACCELERATION = 240;
 
