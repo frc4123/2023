@@ -8,7 +8,10 @@ import edu.wpi.first.wpilibj2.command.WaitCommand;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 
 import frc.robot.Constants.UsbConstants;
-import frc.robot.commands.auto.AutoDriveBackCommand;
+import frc.robot.commands.auto.DriveBackHalf;
+import frc.robot.commands.auto.DriveBackFull;
+import frc.robot.commands.auto.DriveForwardHalf;
+import frc.robot.commands.auto.DriveForwardFull;
 // import frc.robot.commands.auto.DockDrive;
 import frc.robot.commands.drivetrain.SetDrivetrain;
 import frc.robot.commands.horizontal.HorizIn;
@@ -16,6 +19,7 @@ import frc.robot.commands.horizontal.HorizOut;
 import frc.robot.commands.intake.IntakeCubeIn;
 import frc.robot.commands.intake.IntakeCubeOut;
 import frc.robot.commands.vertical.SetVertSetpoint;
+// import frc.robot.commands.vertical.VertIncrement;
 import frc.robot.commands.vertical.VertDown;
 import frc.robot.commands.vertical.VertCone;
 import frc.robot.commands.vertical.VertUp;
@@ -52,10 +56,15 @@ public class RobotContainer {
     public void initializeSubsystems() {
       // add negative (-) to getLeftY to invert drive
       m_drivetrain.setDefaultCommand(
-          new SetDrivetrain(
-            m_drivetrain, 
-            () -> -driverController.getLeftY(), 
-            () -> -driverController.getRightX()));
+        new SetDrivetrain(
+          m_drivetrain, 
+          () -> -driverController.getLeftY(), 
+          () -> -driverController.getRightX()));
+
+      // m_vertElev.setDefaultCommand(
+      //   new VertIncrement(
+      //     m_vertElev, 
+      //     () -> -driverController2.getLeftY()));
     }
 
     public RobotContainer() {
@@ -67,15 +76,16 @@ public class RobotContainer {
     private void configureButtonBindings() {
       // driverController2.leftBumper().onTrue(new WaitCommand(0.1).andThen(m_toggleControl).withTimeout(0.5));    
       // driverController2.rightBumper().onTrue(new WaitCommand(0.1).andThen(m_toggleSet).withTimeout(0.5));
-      driverController.a().whileTrue(m_intakeCubeIn);
       driverController2.a().whileTrue(m_vertCone);
       driverController2.b().whileTrue(m_wristIn);
       driverController2.x().whileTrue(m_wristOut);
-      driverController.y().whileTrue(m_intakeCubeOut);
       driverController2.povUp().whileTrue(m_vertUp);
       driverController2.povDown().whileTrue(m_vertDown);
       driverController2.povLeft().whileTrue(m_horizIn);
       driverController2.povRight().whileTrue(m_horizOut);
+
+      driverController.a().whileTrue(m_intakeCubeIn);
+      driverController.y().whileTrue(m_intakeCubeOut);
 
       // driverController2.leftStick().whileTrue(
       //   new SetVertSetpoint(
@@ -101,13 +111,30 @@ public class RobotContainer {
       }
 
       public void initializeAutoChooser(){
-        m_autoChooser.setDefaultOption("Do Nothing", new WaitCommand(0));
-        m_autoChooser.addOption("Leave Community Zone", new WaitCommand(0.1)
-          .andThen(new AutoDriveBackCommand(m_drivetrain).withTimeout(3.8)));
-        // m_autoChooser.addOption("Charge Station Dock", new WaitCommand(0.1)
-          // .andThen(new DockDrive(drivetrain).withTimeout(5)));
-        m_autoChooser.addOption("Drivetrain Test", new WaitCommand(0.1)
-          .andThen(new AutoDriveBackCommand(m_drivetrain).withTimeout(5)));
+        m_autoChooser.setDefaultOption(
+            "Zone 1/3",
+            new WaitCommand(0.01)
+              .andThen(new VertDown(m_vertElev).withTimeout(0.2)
+              .alongWith(new HorizIn(m_horizElev).withTimeout(0.2))
+              .alongWith(new WristIn(m_wrist)).withTimeout(0.2))
+              .andThen(new VertUp(m_vertElev)).withTimeout(0.5)
+              .andThen(new WristOut(m_wrist).withTimeout(1.5))
+              .andThen(new IntakeCubeOut(m_intake).withTimeout(1))
+              .andThen(new WristIn(m_wrist).withTimeout(1.5)
+              .andThen(new VertDown(m_vertElev).withTimeout(0.3)
+              .andThen(new DriveBackHalf(m_drivetrain).withTimeout(6)))));
+        m_autoChooser.addOption(
+          "Zone 2",
+            new WaitCommand(0.01)
+              .andThen(new VertDown(m_vertElev).withTimeout(0.2)
+              .alongWith(new HorizIn(m_horizElev).withTimeout(0.2))
+              .alongWith(new WristIn(m_wrist)).withTimeout(0.2))
+              .andThen(new VertUp(m_vertElev)).withTimeout(0.5)
+              .andThen(new WristOut(m_wrist).withTimeout(1.5))
+              .andThen(new IntakeCubeOut(m_intake).withTimeout(1))
+              .andThen(new WristIn(m_wrist).withTimeout(1.5)
+              .andThen(new VertDown(m_vertElev).withTimeout(0.3)
+              .andThen(new DriveBackHalf(m_drivetrain).withTimeout(3.335)))));
       
        SmartDashboard.putData("Auto Selector", m_autoChooser);
       }
