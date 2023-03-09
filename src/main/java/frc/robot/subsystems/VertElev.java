@@ -17,10 +17,10 @@ public class VertElev extends SubsystemBase{
 
     private final ElevatorFeedforward m_feedforward = new ElevatorFeedforward(Tuning.VERT_ELEV_FF_S, Tuning.VERT_ELEV_FF_G, Tuning.VERT_ELEV_FF_V, Tuning.VERT_ELEV_FF_A);
   
-    private double x = Tuning.VERT_ELEV_CONSTRAINTS_ACCELERATION;
+    public double m_acceleration = Tuning.VERT_ELEV_CONSTRAINTS_ACCELERATION;
 
     private TrapezoidProfile.Constraints m_constraints =
-        new TrapezoidProfile.Constraints(Tuning.VERT_ELEV_CONSTRAINTS_VELOCITY, x);
+        new TrapezoidProfile.Constraints(Tuning.VERT_ELEV_CONSTRAINTS_VELOCITY, m_acceleration);
     private TrapezoidProfile.State m_goal = new TrapezoidProfile.State();
     private TrapezoidProfile.State m_setpoint = new TrapezoidProfile.State();
   
@@ -61,7 +61,7 @@ public class VertElev extends SubsystemBase{
     }
 
     public double getPosition() {
-        return m_setpoint.position;
+        return setpoint;
     }
 
     private void internalSetPosition(double position) {
