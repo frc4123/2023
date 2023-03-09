@@ -20,12 +20,12 @@ import frc.robot.Constants.AutoConstants;
 import frc.robot.Constants.Tuning;
 import frc.robot.subsystems.Drivetrain;
 
-public class Test extends CommandBase {
+public class AutoTrajectory extends CommandBase {
     Drivetrain drivetrain;
     RamseteCommand ramseteCommand;
 
 
-    public Test(Drivetrain drivetrain) {
+    public AutoTrajectory(Drivetrain drivetrain) {
         this.drivetrain = drivetrain;
         addRequirements(drivetrain);
    
@@ -53,12 +53,12 @@ public class Test extends CommandBase {
         Trajectory exampleTrajectory = TrajectoryGenerator.generateTrajectory(
                 // Start at the origin facing the +X direction
                 new Pose2d(0, 0, new Rotation2d(0)),
-                // Pass through these two interior waypoints, making an 's' curve path
+                // Pass through these interior waypoint(s), making an 's' curve path
                 List.of(
-                    new Translation2d(1, 1), new Translation2d(2, -1)
+                    new Translation2d(1, 1.5)
                 ),
                 // End 3 meters straight ahead of where we started, facing forward
-                new Pose2d(3, 0, new Rotation2d(0)),
+                new Pose2d(0, 3, new Rotation2d(0)),
                 // Pass config
                 config);
 
@@ -72,8 +72,8 @@ public class Test extends CommandBase {
                         Tuning.kaVoltSecondsSquaredPerMeter),
                 Tuning.kDriveKinematics,
                 drivetrain::getWheelSpeeds,
-                new PIDController(Tuning.Drivetrain_Velocity_Kp, 0, 0),
-                new PIDController(Tuning.Drivetrain_Velocity_Kp, 0, 0),
+                new PIDController(Tuning.Drivetrain_Velocity_Kp, 0, Tuning.Drivetrain_Position_Kd),
+                new PIDController(Tuning.Drivetrain_Velocity_Kp, 0, Tuning.Drivetrain_Position_Kd),
                 // RamseteCommand passes volts to the callback
                 drivetrain::tankDriveVolts,
                 drivetrain);
@@ -87,7 +87,7 @@ public class Test extends CommandBase {
     public void execute() {
         // Run path following command, then stop at the end.
 
-        ramseteCommand.andThen(() -> drivetrain.tankDriveVolts(0, 0));
+        ramseteCommand.andThen(() -> drivetrain.arcadeDrive(0, 0));
     }
 
     @Override
