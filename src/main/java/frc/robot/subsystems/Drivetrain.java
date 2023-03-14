@@ -94,10 +94,10 @@ public class Drivetrain extends SubsystemBase{
           leftLeader.getEncoder().getPosition(), 
           rightLeader.getEncoder().getPosition()
       );
-      SmartDashboard.putNumber("Odometry X", m_odometry.getPoseMeters().getX());
-      SmartDashboard.putNumber("Odometry Y", m_odometry.getPoseMeters().getY());
-      SmartDashboard.putNumber("Odometry Heading", m_odometry.getPoseMeters().getRotation().getDegrees());
-      differentialDrive.feed();
+      // SmartDashboard.putNumber("Odometry X", m_odometry.getPoseMeters().getX());
+      // SmartDashboard.putNumber("Odometry Y", m_odometry.getPoseMeters().getY());
+      // SmartDashboard.putNumber("Odometry Heading", m_odometry.getPoseMeters().getRotation().getDegrees());
+      // differentialDrive.feed();
     }
 
   public void setRampRate(double rate) {

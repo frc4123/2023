@@ -23,6 +23,7 @@ import frc.robot.commands.vertical.VertDown;
 import frc.robot.commands.vertical.VertCone;
 import frc.robot.commands.vertical.VertUp;
 import frc.robot.commands.wrist.WristIn;
+import frc.robot.commands.wrist.WristMid;
 import frc.robot.commands.wrist.WristOut;
 import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.HorizElev;
@@ -48,6 +49,7 @@ public class RobotContainer {
     private final HorizIn m_horizIn = new HorizIn(m_horizElev);
     private final HorizOut m_horizOut = new HorizOut(m_horizElev);
     private final WristIn m_wristIn = new WristIn(m_wrist);
+    private final WristMid m_wristMid = new WristMid(m_wrist);
     private final WristOut m_wristOut = new WristOut(m_wrist);
 
     private final SendableChooser<Command> m_autoChooser = new SendableChooser<Command>();
@@ -78,6 +80,7 @@ public class RobotContainer {
       driverController2.a().whileTrue(m_vertCone);
       driverController2.b().whileTrue(m_wristIn);
       driverController2.x().whileTrue(m_wristOut);
+      driverController2.y().whileTrue(m_wristMid);
       driverController2.povUp().whileTrue(m_vertUp);
       driverController2.povDown().whileTrue(m_vertDown);
       driverController2.povLeft().whileTrue(m_horizIn);

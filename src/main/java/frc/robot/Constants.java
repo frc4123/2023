@@ -105,6 +105,7 @@ public final class Constants {
         public static final double WRIST_FF_S = 0.80362;
         public static final double WRIST_FF_A = 0.25455;
         public static final double WRIST_POSITION_IN = 1;
+        public static final double WRIST_POSITION_MID = 45;
         public static final double WRIST_POSITION_OUT = 64; //50
         public static final double WRIST_CONSTRAINTS_VELOCITY = 500;
         public static final double WRIST_CONSTRAINTS_ACCELERATION = 50;
