@@ -71,7 +71,7 @@ public class VertElev extends SubsystemBase{
 
         SmartDashboard.putNumber("VertElev Position", vert.getEncoder().getPosition());
         SmartDashboard.putNumber("VertElev Velocity", vert.getEncoder().getVelocity());
-        SmartDashboard.putNumber("VertElev Internal Setpoint", setpoint);
+        // SmartDashboard.putNumber("VertElev Internal Setpoint", setpoint);
   
         // Create a motion profile with the given maximum velocity and maximum
         // acceleration constraints for the next setpoint, the desired goal, and the

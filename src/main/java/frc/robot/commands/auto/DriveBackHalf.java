@@ -14,7 +14,7 @@ public class DriveBackHalf extends CommandBase{
 
     @Override
     public void execute(){
-        drivetrain.arcadeDrive(-0.55, 0);
+        drivetrain.arcadeDrive(-0.425, 0);
     }
 
     @Override

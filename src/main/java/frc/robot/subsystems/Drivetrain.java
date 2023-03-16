@@ -87,8 +87,8 @@ public class Drivetrain extends SubsystemBase{
     @Override
     public void periodic() {
       SmartDashboard.putNumber("Battery Voltage", pdh.getVoltage());
-      SmartDashboard.putNumber("Left Output", leftLeader.getOutputCurrent());
-      SmartDashboard.putNumber("Right Output", rightLeader.getOutputCurrent());
+      SmartDashboard.putNumber("Left Amps", leftLeader.getOutputCurrent());
+      SmartDashboard.putNumber("Right Amps", rightLeader.getOutputCurrent());
       m_odometry.update(
           m_gyro.getRotation2d(), 
           leftLeader.getEncoder().getPosition(), 

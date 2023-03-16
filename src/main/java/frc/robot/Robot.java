@@ -30,8 +30,8 @@ public class Robot extends TimedRobot {
   @Override
   public void robotInit() {
     m_robotContainer = new RobotContainer();
-    camera.setResolution(640, 480);
-    camera.setFPS(30);
+    camera.setResolution(160, 90);
+    camera.setFPS(15);
   }
 
   /**
