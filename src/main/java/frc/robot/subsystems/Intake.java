@@ -10,7 +10,7 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 // import static frc.robot.Constants.*;
 
 public class Intake extends SubsystemBase{
-    private CANSparkMax intakeLeader = new CANSparkMax(CanIdConstants.INTAKE_LEADER_ID, MotorType.kBrushless);
+    private CANSparkMax intakeLeader = new CANSparkMax(CanIdConstants.INTAKE_LEADER_ID, MotorType.kBrushed);
     // private CANSparkMax intakeLeader = new CANSparkMax(CanIdConstants.INTAKE_LEADER_ID, MotorType.kBrushed);
 
     /** Creates a new Intake Subsystem*/
