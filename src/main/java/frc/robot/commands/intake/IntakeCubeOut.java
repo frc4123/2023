@@ -14,7 +14,7 @@ public class IntakeCubeOut extends CommandBase{
 
     @Override
     public void execute() {
-        intake.setIntakeVelo(0.4);
+        intake.setIntakeVelo(0.9); // 0.4 with neo 550
     }
 
     @Override
