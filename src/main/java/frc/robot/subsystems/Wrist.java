@@ -14,7 +14,7 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import static frc.robot.Constants.*;
 
 public class Wrist extends SubsystemBase{
-    private CANSparkMax wrist = new CANSparkMax(CanIdConstants.WRIST_ID, MotorType.kBrushless); //change when using neo550
+    private CANSparkMax wrist = new CANSparkMax(CanIdConstants.WRIST_ID, MotorType.kBrushless); 
     private SparkMaxLimitSwitch m_forwardLimit = wrist.getReverseLimitSwitch(SparkMaxLimitSwitch.Type.kNormallyOpen);
 
     private final ArmFeedforward m_feedforward = new ArmFeedforward(Tuning.WRIST_FF_S, 0, Tuning.WRIST_FF_A);
