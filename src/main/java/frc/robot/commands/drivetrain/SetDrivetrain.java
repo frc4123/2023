@@ -35,10 +35,10 @@ public class SetDrivetrain extends CommandBase{
     @Override
     public void execute() {
         double speed = 
-            MathUtil.applyDeadband(Math.abs(m_speed.getAsDouble()), 0.05)
+            MathUtil.applyDeadband(Math.abs(m_speed.getAsDouble()), 0.1)
                 * Math.signum(m_speed.getAsDouble());
         double direction =             
-            MathUtil.applyDeadband(Math.abs(m_direction.getAsDouble()), 0.05)
+            MathUtil.applyDeadband(Math.abs(m_direction.getAsDouble()), 0.1)
                 * Math.signum(m_direction.getAsDouble());
         m_drivetrain.arcadeDrive(speed, direction);
     }

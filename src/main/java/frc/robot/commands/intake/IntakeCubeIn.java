@@ -14,7 +14,7 @@ public class IntakeCubeIn extends CommandBase{
 
     @Override
     public void execute() {
-        intake.setIntakeVelo(-0.9); // -0.4 with neo 550
+        intake.setIntakeVelo(-0.7); // -0.4 with neo 550
     }
 
     @Override
