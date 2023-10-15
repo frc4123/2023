@@ -17,8 +17,6 @@ import frc.robot.commands.horizontal.HorizIn;
 import frc.robot.commands.horizontal.HorizOut;
 import frc.robot.commands.intake.IntakeCubeIn;
 import frc.robot.commands.intake.IntakeCubeOut;
-import frc.robot.commands.piston.PistonIn;
-import frc.robot.commands.piston.PistonOut;
 import frc.robot.commands.vertical.SetVertSetpoint;
 // import frc.robot.commands.vertical.VertIncrement;
 import frc.robot.commands.vertical.VertDown;
@@ -30,7 +28,6 @@ import frc.robot.commands.wrist.WristOut;
 import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.HorizElev;
 import frc.robot.subsystems.Intake;
-import frc.robot.subsystems.Piston;
 import frc.robot.subsystems.VertElev;
 import frc.robot.subsystems.Wrist;
 
@@ -40,7 +37,6 @@ public class RobotContainer {
     private final Intake m_intake = new Intake();
     private final HorizElev m_horizElev = new HorizElev();
     private final Wrist m_wrist = new Wrist();
-    private final Piston m_piston = new Piston();
 
     private final CommandXboxController driverController = new CommandXboxController(UsbConstants.DRIVER_CONTROLLER_PORT);
     private final CommandXboxController driverController2 = new CommandXboxController(UsbConstants.AUXDRIVER_CONTROLLER_PORT);
@@ -55,8 +51,6 @@ public class RobotContainer {
     private final WristIn m_wristIn = new WristIn(m_wrist);
     private final WristMid m_wristMid = new WristMid(m_wrist);
     private final WristOut m_wristOut = new WristOut(m_wrist);
-    private final PistonIn m_pistonIn = new PistonIn(m_piston);
-    private final PistonOut m_pistonOut = new PistonOut(m_piston);
 
     private final SendableChooser<Command> m_autoChooser = new SendableChooser<Command>();
 
@@ -94,8 +88,6 @@ public class RobotContainer {
 
       driverController.a().whileTrue(m_intakeCubeIn);
       driverController.y().whileTrue(m_intakeCubeOut);
-      driverController.b().onTrue(m_pistonOut);
-      driverController.x().onTrue(m_pistonIn);
 
       // driverController2.leftStick().whileTrue(
       //   new SetVertSetpoint(
