@@ -122,11 +122,12 @@ public class RobotContainer {
             .andThen(new VertUp(m_vertElev)).withTimeout(0.5)
             .andThen(new HorizOut(m_horizElev).withTimeout(0.5))
             .andThen(new WristOut(m_wrist).withTimeout(1.1234))
-            .andThen(new IntakeCubeOut(m_intake).withTimeout(1))
+            .andThen(new IntakeCubeOut(m_intake).withTimeout(.35)) //1
+            .andThen(new IntakeCubeIn(m_intake).withTimeout(.1)) //NA
             .andThen(new WristIn(m_wrist).withTimeout(1)
             .andThen(new HorizIn(m_horizElev).withTimeout(0.5))
             .andThen(new VertDown(m_vertElev).withTimeout(0.3)
-            .andThen(new DriveBackHalf(m_drivetrain).withTimeout(6)))));
+            .andThen(new DriveBackHalf(m_drivetrain).withTimeout(6))))); 
       m_autoChooser.addOption(
         "Zone 1/3 Mid",
           new WaitCommand(0.01)
@@ -135,12 +136,13 @@ public class RobotContainer {
             .alongWith(new WristIn(m_wrist)).withTimeout(0.2))
             .andThen(new VertUp(m_vertElev)).withTimeout(0.5)
             .andThen(new WristOut(m_wrist).withTimeout(1.4123))
-            .andThen(new IntakeCubeOut(m_intake).withTimeout(1))
+            .andThen(new IntakeCubeOut(m_intake).withTimeout(.35)) //1
+            .andThen(new IntakeCubeIn(m_intake).withTimeout(.1)) //NA
             .andThen(new WristIn(m_wrist).withTimeout(1)
             .andThen(new VertDown(m_vertElev).withTimeout(0.3)
-            .andThen(new DriveBackHalf(m_drivetrain).withTimeout(6)))));
+            .andThen(new DriveBackHalf(m_drivetrain).withTimeout(6))))); 
       m_autoChooser.addOption(
-        "Zone 2 High",
+        "Zone 2 High (Red)",
           new WaitCommand(0.01)
             .andThen(new VertDown(m_vertElev).withTimeout(0.2)
             .alongWith(new HorizIn(m_horizElev).withTimeout(0.2))
@@ -148,22 +150,51 @@ public class RobotContainer {
             .andThen(new VertUp(m_vertElev)).withTimeout(0.5)
             .andThen(new HorizOut(m_horizElev).withTimeout(0.5))
             .andThen(new WristOut(m_wrist).withTimeout(1.1234))
-            .andThen(new IntakeCubeOut(m_intake).withTimeout(1))
+            .andThen(new IntakeCubeOut(m_intake).withTimeout(.35)) //1
+            .andThen(new IntakeCubeIn(m_intake).withTimeout(.1)) //NA
             .andThen(new WristIn(m_wrist).withTimeout(1)
             .andThen(new HorizIn(m_horizElev).withTimeout(0.5))
             .andThen(new VertDown(m_vertElev).withTimeout(0.3)
-            .andThen(new DriveBackHalf(m_drivetrain).withTimeout(3.335)))));
-      m_autoChooser.addOption("Zone 2 Mid",
+            .andThen(new DriveBackHalf(m_drivetrain).withTimeout(3.33))))); //3.335
+      m_autoChooser.addOption(
+        "Zone 2 High (Blue)",
+            new WaitCommand(0.01)
+                  .andThen(new VertDown(m_vertElev).withTimeout(0.2)
+                  .alongWith(new HorizIn(m_horizElev).withTimeout(0.2))
+                  .alongWith(new WristIn(m_wrist)).withTimeout(0.2))
+                  .andThen(new VertUp(m_vertElev)).withTimeout(0.5)
+                  .andThen(new HorizOut(m_horizElev).withTimeout(0.5))
+                  .andThen(new WristOut(m_wrist).withTimeout(1.1234))
+                  .andThen(new IntakeCubeOut(m_intake).withTimeout(.35)) //1
+                  .andThen(new IntakeCubeIn(m_intake).withTimeout(.1)) //NA
+                  .andThen(new WristIn(m_wrist).withTimeout(1)
+                  .andThen(new HorizIn(m_horizElev).withTimeout(0.5))
+                  .andThen(new VertDown(m_vertElev).withTimeout(0.3)
+                  .andThen(new DriveBackHalf(m_drivetrain).withTimeout(3.255))))); //3.335
+      m_autoChooser.addOption("Zone 2 Mid (Red)",
           new WaitCommand(0.01)
             .andThen(new VertDown(m_vertElev).withTimeout(0.2)
             .alongWith(new HorizIn(m_horizElev).withTimeout(0.2))
             .alongWith(new WristIn(m_wrist)).withTimeout(0.2))
             .andThen(new VertUp(m_vertElev)).withTimeout(0.5)
             .andThen(new WristOut(m_wrist).withTimeout(1.4123))
-            .andThen(new IntakeCubeOut(m_intake).withTimeout(1))
+            .andThen(new IntakeCubeOut(m_intake).withTimeout(.35)) //1
+            .andThen(new IntakeCubeIn(m_intake).withTimeout(.1)) //NA
             .andThen(new WristIn(m_wrist).withTimeout(1)
             .andThen(new VertDown(m_vertElev).withTimeout(0.3)
-            .andThen(new DriveBackHalf(m_drivetrain).withTimeout(3.335)))));
+            .andThen(new DriveBackHalf(m_drivetrain).withTimeout(3.33))))); //3.335
+      m_autoChooser.addOption("Zone 2 Mid (Blue)",
+          new WaitCommand(0.01)
+              .andThen(new VertDown(m_vertElev).withTimeout(0.2)
+              .alongWith(new HorizIn(m_horizElev).withTimeout(0.2))
+              .alongWith(new WristIn(m_wrist)).withTimeout(0.2))
+              .andThen(new VertUp(m_vertElev)).withTimeout(0.5)
+              .andThen(new WristOut(m_wrist).withTimeout(1.4123))
+              .andThen(new IntakeCubeOut(m_intake).withTimeout(.35)) //1
+              .andThen(new IntakeCubeIn(m_intake).withTimeout(.1)) //NA
+              .andThen(new WristIn(m_wrist).withTimeout(1)
+              .andThen(new VertDown(m_vertElev).withTimeout(0.3)
+              .andThen(new DriveBackHalf(m_drivetrain).withTimeout(3.255))))); //3.335
       
       
        SmartDashboard.putData("Auto Selector", m_autoChooser);
