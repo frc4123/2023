@@ -14,8 +14,8 @@ public class Piston extends SubsystemBase{
 
     
     public Piston() {
-        comp = new Compressor(11, PneumaticsModuleType.CTREPCM);
-        doubleSolenoid = new DoubleSolenoid(11, PneumaticsModuleType.CTREPCM, 0, 1);
+        comp = new Compressor(0, PneumaticsModuleType.CTREPCM);
+        doubleSolenoid = new DoubleSolenoid(PneumaticsModuleType.CTREPCM, 0, 1);
 
         doubleSolenoid.set(kReverse);
         comp.enableDigital();
