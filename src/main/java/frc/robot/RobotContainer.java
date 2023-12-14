@@ -1,11 +1,13 @@
 package frc.robot;
 
+import edu.wpi.first.wpilibj.PS4Controller;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.WaitCommand;
-import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
+import edu.wpi.first.wpilibj2.command.button.CommandPS4Controller;
+
 
 import frc.robot.Constants.UsbConstants;
 import frc.robot.commands.auto.DriveBackHalf;
@@ -42,8 +44,8 @@ public class RobotContainer {
     private final Wrist m_wrist = new Wrist();
     private final Piston m_piston = new Piston();
 
-    private final CommandXboxController driverController = new CommandXboxController(UsbConstants.DRIVER_CONTROLLER_PORT);
-    private final CommandXboxController driverController2 = new CommandXboxController(UsbConstants.AUXDRIVER_CONTROLLER_PORT);
+    private final PS4Controller driverController = new PS4Controller(UsbConstants.DRIVER_CONTROLLER_PORT);
+    private final PS4Controller driverController2 = new PS4Controller(UsbConstants.AUXDRIVER_CONTROLLER_PORT);
 
     private final VertUp m_vertUp = new VertUp(m_vertElev);
     private final VertCone m_vertCone = new VertCone(m_vertElev);
@@ -83,19 +85,20 @@ public class RobotContainer {
     private void configureButtonBindings() {
       // driverController2.leftBumper().onTrue(new WaitCommand(0.1).andThen(m_toggleControl).withTimeout(0.5));    
       // driverController2.rightBumper().onTrue(new WaitCommand(0.1).andThen(m_toggleSet).withTimeout(0.5));
-      driverController2.a().whileTrue(m_vertCone);
-      driverController2.b().whileTrue(m_wristIn);
-      driverController2.x().whileTrue(m_wristOut);
-      driverController2.y().whileTrue(m_wristMid);
-      driverController2.povUp().whileTrue(m_vertUp);
-      driverController2.povDown().whileTrue(m_vertDown);
-      driverController2.povLeft().whileTrue(m_horizIn);
-      driverController2.povRight().whileTrue(m_horizOut);
+      while (driverController2.getCrossButtonPressed()) m_vertCone.execute();
+      while (driverController2.getCircleButtonPressed()) m_wristIn.execute();
+      while (driverController2.getSquareButtonPressed()) m_wristOut.execute();
+      while (driverController2.getTriangleButtonPressed()) m_wristMid.execute();
+      while (driverController2.getPOV() == 0) m_vertUp.execute();
+      while (driverController2.getPOV() == 180) m_vertDown.execute();
+      while (driverController2.getPOV() == 270) m_horizIn.execute();
+      while (driverController2.getPOV() == 90) m_horizOut.execute();
 
-      driverController.a().whileTrue(m_intakeCubeIn);
-      driverController.y().whileTrue(m_intakeCubeOut);
-      driverController.b().onTrue(m_pistonOut);
-      driverController.x().onTrue(m_pistonIn);
+      while (driverController.getCrossButtonPressed()) m_intakeCubeIn.execute();
+      while (driverController.getTriangleButtonPressed()) m_intakeCubeOut.execute();
+      if (driverController.getCircleButtonPressed()) m_pistonOut.execute();
+      if (driverController.getSquareButtonPressed()) m_pistonIn.execute();
+      //when not pressed, dpad = -1 int
 
       // driverController2.leftStick().whileTrue(
       //   new SetVertSetpoint(
